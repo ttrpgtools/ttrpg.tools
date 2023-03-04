@@ -1,0 +1,16 @@
+{
+  "name": "ttrpg.tools",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5177",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "tailwindcss": "^3.2.7",
+    "vite": "^4.1.0"
+  }
+}
