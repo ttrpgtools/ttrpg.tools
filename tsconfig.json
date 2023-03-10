@@ -1,0 +1,12 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "$comp/*": ["./src/lib/components/*"],
+      "$part/*": ["./src/lib/partials/*"],
+      "$util/*": ["./src/lib/util/*"],
+      "$layout/*": ["./src/lib/layout/*"]
+    }
+  }
+}
