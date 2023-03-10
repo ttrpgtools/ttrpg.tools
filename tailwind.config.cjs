@@ -1,13 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./index.html'],
-  theme: {
-    extend: {
-      colors: {
+	darkMode: 'class',
+	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	theme: {
+		fontFamily: {
+			'sans': ['Recursive', 'sans-serif'],
+			'mono': ['JetBrains Mono', 'monospace']
+    },
+		extend: {
+			colors: {
         discord: '#5865f2',
         patreon: '#F1465A'
       }
-    },
-  },
-  plugins: [],
+		},
+	},
+	plugins: [
+		require('@tailwindcss/typography'),
+	],
 }

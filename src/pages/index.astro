@@ -1,0 +1,38 @@
+---
+import Base from "$layout/Base.astro";
+import { config } from "$util/config";
+import Section from "$part/Section.astro";
+import Social from "$part/Social.svelte";
+import Project from "$part/Project.astro";
+---
+
+<Base head={{title: config.title, description: config.description }}>
+	<Section>
+		<h2 class="font-bold text-4xl mb-6">Hi there, I'm <span class="text-emerald-500">Colin</span></h2>
+		<div class="prose prose-invert prose-lg mb-6 prose-strong:text-emerald-500">
+			<p>
+				This is where I get to show off some of the things that I'm working on.
+				Those things might be <strong>apps</strong>, or simply game resources like
+				<strong>maps</strong> or <strong>random tables.</strong> My goal is to make
+				things that help you organize, run or play TTRPGs more easily.
+			</p>
+		</div>
+		<div class="flex gap-4 items-center">
+			<Social icon="github" colors="bg-white text-black" href="https://github.com/ttrpgtools/" />
+			<Social icon="patreon" colors="bg-patreon text-white" href="https://patreon.com/ttrpgtools/" />
+			<Social icon="discord" colors="bg-discord text-white" href="https://discord.gg/KFsS85zd5B" />
+		</div>
+	</Section>
+	<Section>
+		<h2 class="text-lg font-bold text-emerald-500 mb-4">Projects</h2>
+		<Project title="Brighter Worlds Online" url="https://brighterworlds.app">
+			<div slot="icon" class="text-purple-500">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-24 w-24" fill="currentColor"><path d="M272 96c-78.6 0-145.1 51.5-167.7 122.5c33.6-17 71.5-26.5 111.7-26.5h88c8.8 0 16 7.2 16 16s-7.2 16-16 16H288 216s0 0 0 0c-16.6 0-32.7 1.9-48.3 5.4c-25.9 5.9-49.9 16.4-71.4 30.7c0 0 0 0 0 0C38.3 298.8 0 364.9 0 440v16c0 13.3 10.7 24 24 24s24-10.7 24-24V440c0-48.7 20.7-92.5 53.8-123.2C121.6 392.3 190.3 448 272 448l1 0c132.1-.7 239-130.9 239-291.4c0-42.6-7.5-83.1-21.1-119.6c-2.6-6.9-12.7-6.6-16.2-.1C455.9 72.1 418.7 96 376 96L272 96z"/></svg>
+			</div>
+			<p>
+				A character creator and sheet manager for the Brighter Worlds RPG.
+			</p>
+		</Project>
+
+	</Section>
+</Base>
