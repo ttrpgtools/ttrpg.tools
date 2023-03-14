@@ -3,9 +3,11 @@ import Icon from './Icon.svelte';
 import Section from './Section.astro';
 ---
 <Section>
-	<footer class="flex items-center justify-center gap-1 text-gray-500 dark:text-gray-300 dark:border-gray-600 border-t p-5">
-		<span>Crafted with</span>
-		<span title="love" class="relative -top-px"><Icon icon="heart" /></span>
-		<span>in Bermuda</span>
+	<footer class="flex items-center justify-start">
+		<div class="flex items-center justify-start gap-2 text-gray-300 border-gray-600 border-t py-5 pr-5">
+			<span>Crafted with</span>
+			<span title="love" class="relative -top-px"><Icon icon="heart" /></span>
+			<span>in Bermuda</span>
+		</div>
 	</footer>
 </Section>

@@ -6,6 +6,7 @@
       "$comp/*": ["./src/lib/components/*"],
       "$part/*": ["./src/lib/partials/*"],
       "$util/*": ["./src/lib/util/*"],
+      "$asset/*": ["./src/assets/*"],
       "$layout/*": ["./src/lib/layout/*"]
     }
   }
