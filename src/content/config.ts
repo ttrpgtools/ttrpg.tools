@@ -6,6 +6,7 @@ const projects = defineCollection({
     excerpt: z.string().optional(),
     tags: z.array(z.string()),
     url: z.string().url(),
+    code: z.string().url().optional(),
     icon: z.string().optional(),
   })
 });

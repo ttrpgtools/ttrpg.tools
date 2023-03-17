@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from "$layout/Base.astro";
 import Section from '$part/Section.astro';
 import Tags from '$part/Tags.astro';
+import Icon from '$part/Icon.svelte';
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -25,6 +26,7 @@ const { Content } = await entry.render();
       <div class="prose prose-invert prose-emerald prose-lg">
         <Content />
       </div>
+      {entry.data?.code && <a href={entry.data.code} target="_blank" class="text-zinc-50"><Icon icon="github" size="1.5rem" /></a>}
     </div>
   </Section>
 </Base>
