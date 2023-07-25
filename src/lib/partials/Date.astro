@@ -1,0 +1,9 @@
+---
+interface Props {
+  date: Date
+}
+
+const { date } = Astro.props;
+const dfmt = Intl.DateTimeFormat('en-uk', { dateStyle: 'medium', timeZone: 'UTC'});
+---
+<time>{dfmt.format(date)}</time>

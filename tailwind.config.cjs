@@ -5,6 +5,7 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			'sans': ['Recursive', 'sans-serif'],
+			'serif': ['Merriweather', 'serif'],
 			'mono': ['JetBrains Mono', 'monospace']
     },
 		extend: {

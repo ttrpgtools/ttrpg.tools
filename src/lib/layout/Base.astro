@@ -1,5 +1,8 @@
 ---
+import type Date from '$part/Date.astro';
 import Footer from '$part/Footer.astro';
+import Hero from '$part/Hero.astro';
+import type Icon from '$part/Icon.svelte';
 import NavBar from '$part/NavBar.astro';
 import { config } from '$util/config';
 export interface Props {
@@ -21,13 +24,13 @@ const {
     <meta name='description' content={description} />
     <meta name='author' content={config.author} />
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=jetbrains-mono:400|recursive:400,700" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=jetbrains-mono:400|recursive:400,700|merriweather:700" rel="stylesheet" />
 
     <link rel='alternate' type='application/rss+xml' href='/rss.xml' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <script src="https://beneficial-handsome.ttrpg.tools/script.js" data-site="GKYKKFRM" data-excluded-domains="localhost" defer></script>
   </head>
-  <body class='bg-zinc-900 text-gray-50 font-sans'>
+  <body class:list={['bg-zinc-900', 'text-gray-50', 'font-sans']}>
     <NavBar />
 
     <slot></slot>
