@@ -5,4 +5,5 @@ export const config = {
   author: 'Colin Bate',
   locale_region: 'en-us',
   locale: 'en',
+  url: 'https://ttrpg.tools',
 };

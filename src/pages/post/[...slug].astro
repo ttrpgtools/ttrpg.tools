@@ -24,8 +24,8 @@ const { Content } = await post.render();
 <Base head={{title: post.data.title, description: post.data.excerpt }}>
   <Section>
     <div class="relative pt-px">
-      <img class="-z-10 object-cover w-full h-96 absolute top-0" src={post.data.banner.src} alt={post.data.banner.alt}>
-      <div class="flex flex-col gap-4 p-8 mx-auto max-w-prose box-content mt-48 bg-zinc-900">
+      <img class="-z-10 object-cover w-full h-32 sm:h-64 md:h-96 md:absolute top-0" src={post.data.banner.src} alt={post.data.banner.alt}>
+      <div class="flex flex-col gap-4 py-8 md:px-8 mx-auto max-w-prose box-content md:mt-48 bg-zinc-900">
         {post.data.draft && <div class="p-4 rounded bg-rose-700 text-white flex flex-row items-center gap-2"><Icon icon="warning" size="1.5rem" /> This post is a draft. It is not intended to be shared.</div>}
         <div class="flex flex-row gap-4">
           <h1 class="text-4xl font-bold mb-2 font-serif">{post.data.title}</h1>
