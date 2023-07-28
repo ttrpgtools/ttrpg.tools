@@ -7,18 +7,19 @@ export interface Props {
   img?: string;
 }
 const { title, description, img } = Astro.props;
+const current = Astro.request.url;
 ---
 <AstroSeo
-  title={`${config.site_name} | ${title}`}
-  description={ description || `The portfolio and developer blog of Colin Bate.`}
+  title={`${title} | ${config.title}`}
+  description={ description || config.description }
   canonical={config.url}
   openGraph={{
-    url: config.url,
-    title: config.site_name,
+    url: current,
+    title: title || config.site_name,
     description: description || config.description,
     images: [
       {
-        url: `${config.url}${img || `/social-card.png`}`,
+        url: img || `${config.url}/social-card.png`,
         width: 1080,
         height: 1080,
         alt: "TTRPG.tools social open graph",
