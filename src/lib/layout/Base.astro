@@ -12,9 +12,11 @@ export interface Props {
     description: string;
     socialImg?: string;
   };
+  proseFoot?: boolean;
 }
 const {
   head: { title, description, socialImg },
+  proseFoot,
 } = Astro.props as Props;
 ---
 
@@ -35,6 +37,6 @@ const {
 
     <slot></slot>
 
-    <Footer />
+    <Footer prose={proseFoot} />
   </body>
 </html>

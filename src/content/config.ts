@@ -21,6 +21,7 @@ const blog = defineCollection({
     banner: z.object({
       src: z.string(),
       alt: z.string(),
+      position: z.string().optional(),
     }),
   })
 });

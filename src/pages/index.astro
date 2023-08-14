@@ -4,12 +4,13 @@ import { config } from "$util/config";
 import Section from "$part/Section.astro";
 import Social from "$part/Social.svelte";
 import Project from "$part/Project.astro";
+import Date from '$part/Date.astro';
 import { getCollection } from 'astro:content';
 
 const projects = await getCollection('projects');
-// const posts = await getCollection('blog', ({ data }) => {
-//   return data.draft !== true;
-// });
+const posts = await getCollection('blog', ({ data }) => {
+  return data.draft !== true;
+});
 
 ---
 
@@ -31,11 +32,26 @@ const projects = await getCollection('projects');
 		</div>
 	</Section>
 	<Section>
-		<h2 class="text-lg font-bold text-emerald-500 mb-4">Projects</h2>
-		<div class="flex flex-col gap-4">
-			{projects.map(proj => (
-				<Project title={proj.data.title} url={proj.data.url} slug={proj.slug} excerpt={proj.data.excerpt} tags={proj.data.tags} icon={proj.data.icon} code={proj.data.code} />
-			))}
+		<div class="flex flex-row gap-6">
+			<section class="basis-2/3">
+				<h2 class="text-xl font-serif font-bold  mb-4">Projects</h2>
+				<div class="flex flex-col gap-4">
+					{projects.map(proj => (
+						<Project title={proj.data.title} url={proj.data.url} slug={proj.slug} excerpt={proj.data.excerpt} tags={proj.data.tags} icon={proj.data.icon} code={proj.data.code} />
+						))}
+				</div>
+			</section>
+			<section>
+				<h2 class="text-xl font-serif font-bold  mb-4">Posts</h2>
+				<div class="flex flex-col gap-4 w-full">
+					{posts.map(post => (
+						<div class="bg-zinc-800 rounded-md p-2">
+							<a class="text-blue-300 hover:underline block" href={`/post/${post.slug}/`}>{post.data.title}</a>
+							<span class="text-zinc-400">// <Date date={post.data.date} /></span>
+						</div>
+					))}
+				</div>
+			</section>
 		</div>
 	</Section>
 </Base>
