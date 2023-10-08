@@ -1,0 +1,42 @@
+---
+title: "Brighter Worlds Online Updates (Fall 2023)"
+excerpt: "Changes to support the new beta, plus another one-shot."
+date: 2023-10-07
+tags:
+  - oneshot
+  - systems
+  - brighter-worlds
+  - dev
+  - app
+banner:
+  src: https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80
+  alt: "Typewriter with Update on paper"
+---
+import { Image } from 'astro:assets'
+import screenshot from '$asset/bwo-gm-preview.png';
+
+With the work I've been doing lately, it was time to update everyone on what has been changing. Also, Astro, the tooling I'm using to make this site, has added some interesting new features. So of course I wanted to test those out. You should notice the transitions between pages are now more animated.
+
+### Character Sheet
+
+Back in August, a revised version of Brighter Worlds (the game) was released as a beta, and so I updated the character sheet to support the few changes needed. All of these changes are still, as of the date of this article, only on my [development version][dev] of the site.
+
+### GM Tools
+
+If you use the [development app][dev], you may notice the GM Tools. As the name suggests, this is where the game master can organize content to run a game of Brighter Worlds.
+
+<Image src={screenshot} alt="Screenshot of the Brighter Worlds Online GM Tools" />
+
+It is still a work in progress, but enough functionality exists to make it usable for running a game. I don't recommend using it to manage a campaign, but it certainly works for a one-shot or shorter-term adventure.
+
+The most helpful feature is creating custom NPCs or creatures to add to the "Play Mat" and tracking their health and attacks. You can also create customized encounter tables and, loot tables and roll on those. It will also allow you to send the dice rolls and loot details to a Discord channel.
+
+### Playtesting One-shot
+
+One of the reasons that I rekindled my work on this app is that with the update to the game, there was an accompanying one-shot adventure published as well called [Unfinished Business](https://dev.brighterworldsrpg.com/Unfinished%20Business/). I wanted to run this as it sounded like a lot of fun. I had a backlog of issues to fix up the encounter tools I had written before. And that turned into the changes I mentioned above.
+
+Fortunately, I got far enough that I was able to use the tools to run the game, and it *was* a lot of fun. And the tools helped. There is still more work to do than I'll ever have time for, but I'm chipping away at it.
+
+I have more games in November that I will be running in Brighter Worlds, so that will motivate me to get some more features completed. They will also be the first games for the system I am writing personally. So I will be distracted with finishing that as well. I will report back at that point.
+
+[dev]: https://dev.brighterworlds.app

@@ -6,6 +6,7 @@ import type Icon from '$part/Icon.svelte';
 import NavBar from '$part/NavBar.astro';
 import Seo from '$part/Seo.astro';
 import { config } from '$util/config';
+import { ViewTransitions } from 'astro:transitions';
 export interface Props {
   head: {
     title: string;
@@ -30,13 +31,15 @@ const {
     <meta name='author' content={config.author} />
     <link rel='alternate' type='application/rss+xml' href='/rss.xml' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <ViewTransitions />
     <script src="https://beneficial-handsome.ttrpg.tools/script.js" data-site="GKYKKFRM" data-excluded-domains="localhost" defer></script>
   </head>
-  <body class:list={['bg-zinc-900', 'text-gray-50', 'font-sans']}>
+  <body class:list={['bg-zinc-900', 'text-gray-50', 'font-sans']} transition:animate="none">
     <NavBar />
-
-    <slot></slot>
-
-    <Footer prose={proseFoot} />
+    <main transition:animate="fade">
+      <slot></slot>
+      
+      <Footer prose={proseFoot} />
+    </main>
   </body>
 </html>

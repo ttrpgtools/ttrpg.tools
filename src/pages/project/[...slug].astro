@@ -17,16 +17,17 @@ const { Content } = await entry.render();
 ---
 <Base head={{title: entry.data.title, description: entry.data.excerpt }}>
   <Section>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-4" transition:name={`project-card-${entry.slug}`}>
       <div class="flex flex-row gap-4">
-        {entry.data?.icon && <div class="w-8 h-8" set:html={entry.data.icon}></div>}  
-        <h1 class="text-2xl font-bold mb-2"><a class="hover:underline" href={entry.data.url} target="_blank">{entry.data.title}</a></h1>
+        {entry.data?.icon && <div class="w-8 h-8" set:html={entry.data.icon} transition:name={`project-icon-${entry.slug}`}></div>}  
+        <h1 class="text-4xl font-bold mb-2 font-serif" transition:name={`project-title-${entry.slug}`}><a class="hover:underline" href={entry.data.url} target="_blank">{entry.data.title}</a></h1>
       </div>
       <Tags tags={entry.data.tags} />
-      <div class="prose prose-invert prose-emerald prose-lg">
+      <div class="prose prose-invert prose-blue prose-lg prose-a:text-blue-300 prose-a:no-underline hover:prose-a:underline">
         <Content />
       </div>
-      {entry.data?.code && <a href={entry.data.code} target="_blank" class="text-zinc-50"><Icon icon="github" size="1.5rem" /></a>}
+      {entry.data?.code && <a href={entry.data.code} target="_blank" rel="noopener" class="text-zinc-50"><Icon icon="github" size="1.5rem" /></a>}
+      <a href="/" class="text-blue-300 hover:underline block mt-4">&larr; Home</a>
     </div>
   </Section>
 </Base>
