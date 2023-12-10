@@ -1,6 +1,7 @@
 import { z, defineCollection } from 'astro:content';
 
 const projects = defineCollection({
+  type: 'content',
   schema: z.object({
     title: z.string(),
     excerpt: z.string().optional(),
@@ -11,7 +12,23 @@ const projects = defineCollection({
   })
 });
 
+const gallery = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    excerpt: z.string().optional(),
+    date: z.date(),
+    aicontent: z.boolean().default(false),
+    imageFolder: z.string().optional(),
+    images: z.array(z.object({
+      path: z.string(),
+      caption: z.string().optional(),
+    })).optional(),
+  }).refine((s => s.imageFolder || s.images))
+});
+
 const blog = defineCollection({
+  type: 'content',
   schema: z.object({
     title: z.string(),
     excerpt: z.string(),
@@ -28,5 +45,6 @@ const blog = defineCollection({
 
 export const collections = {
   blog,
-  projects
+  projects,
+  gallery,
 };

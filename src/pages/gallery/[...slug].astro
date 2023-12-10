@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  gallery: CollectionEntry<'gallery'>;
+}
+import { Image } from 'astro:assets';
+import Base from "$layout/Base.astro";
+import Section from '$part/Section.astro';
+import Date from '$part/Date.astro';
+import Icon from '$part/Icon.svelte';
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const galleries = await getCollection('gallery');
+  return galleries.map(gallery => ({
+    params: { slug: gallery.slug }, props: { gallery },
+  }));
+}
+
+// 2. When it's time to render, you can get the entry directly from the prop
+const { gallery } = Astro.props;
+const { imageFolder, images } = gallery.data;
+const loaded = import.meta.glob<{ default: ImageMetadata; }>('/src/assets/**/*.{jpeg,jpg,png,webp}', { });
+const available = new Set(Object.keys(loaded));
+const galleryImg = images && images.length ?
+  images.flatMap(img => available.has(`${imageFolder ?? ''}${img.path}`) ? [{...img, path: `${imageFolder ?? ''}${img.path}`}] : []) :
+  Object.keys(loaded).filter(path => path.startsWith(imageFolder ?? '')).map(path => ({path} as {
+    path: string;
+    caption?: string | undefined;
+  }));
+const { Content } = await gallery.render();
+---
+<Base head={{title: gallery.data.title, description: gallery.data.excerpt ?? '' }} proseFoot={true}>
+  <Section>
+    <div class="relative pt-px">
+      <div class="flex flex-col gap-4 py-8 md:px-8 mx-auto max-w-prose box-content  bg-zinc-900">
+        {gallery.data.aicontent && <div class="p-4 rounded bg-rose-700 text-white flex flex-row items-center gap-2"><Icon icon="warning" size="1.5rem" /> This gallery contains AI generated images.</div>}
+        <div class="flex flex-row gap-4">
+          <h1 class="text-4xl font-bold mb-2 font-serif" transition:name={`gallery-title-${gallery.slug}`}>{gallery.data.title}</h1>
+        </div>
+        <Date date={gallery.data.date} />
+        <div class="mt-2 prose prose-invert prose-a:text-blue-300 hover:prose-a:underline prose-a:no-underline prose-lg prose-headings:font-serif prose-headings:font-bold">
+          <Content />
+        </div>
+        <div>
+          <a href="/" class="text-blue-300 hover:underline mt-4">&larr; Home</a>
+        </div>
+      </div>
+      <ul class="grid gap-4 grid-cols-1 lg:grid-cols-2 xl:-mx-20 2xl:-mx-64">
+        {galleryImg.map(gi => <li><figure class="rounded-lg drop-shadow-lg bg-zinc-800"><Image src={loaded[gi.path]()} alt="Gallery image" class:list={["rounded-t-lg w-full object-cover", {'rounded-b-lg': !gi.caption}]} />{gi.caption && <figcaption class="px-5 py-3 text-center text-lg font-semibold">{gi.caption}</figcaption>}</figure></li>)}
+      </ul>
+    </div>
+  </Section>
+</Base>
