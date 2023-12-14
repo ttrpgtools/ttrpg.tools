@@ -1,11 +1,11 @@
 repo_name: ttrpgtools/ttrpg.tools
-report_id: c8e234cd48331cc0b44b4081a9422e4a
+report_id: cb2367119dd79cf57c44b8917065cefe
 repo_type: Public
-timestamp: '2023-11-09T20:40:23+00:00'
+timestamp: '2023-12-14T09:57:51+00:00'
 requested_by: colinbate
 provider: github
 branch: main
-detected_tools_count: 9
+detected_tools_count: 10
 tools:
 - name: JavaScript
   description: Lightweight, interpreted, object-oriented language with first-class
@@ -50,7 +50,19 @@ tools:
   image_url: https://img.stackshare.io/service/6113/7exmJEg4_400x400.png
   detection_source: package.json
   last_updated_by: Colin Bate
-  last_updated_on: 2023-10-08 02:01:55.000000000 Z
+  last_updated_on: 2023-12-07 20:57:12.000000000 Z
+- name: Tailwind CSS
+  description: A utility-first CSS framework for rapid UI development
+  website_url: https://tailwindcss.com
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Front-End Frameworks
+  image_url: https://img.stackshare.io/service/8158/default_660b7c41c3ba489cb581eec89c04655404258c19.png
+  detection_source: package.json
+  last_updated_by: Colin Bate
+  last_updated_on: 2023-12-07 20:57:12.000000000 Z
 - name: Git
   description: Fast, scalable, distributed revision control system
   website_url: http://git-scm.com/
@@ -74,42 +86,42 @@ tools:
 - name: "@types/node"
   description: TypeScript definitions for Node.js
   package_url: https://www.npmjs.com/@types/node
-  version: 20.8.3
+  version: 20.10.4
   license: MIT
   open_source: true
   hosted_saas: false
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15809/default_5e5e8ac63beda29f31f1844df64d4b8247570a66.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/ttrpgtools/ttrpg.tools/blob/main/package-lock.json
   detection_source: package.json
   last_updated_by: Colin Bate
   last_updated_on: 2023-10-08 02:01:55.000000000 Z
+- name: sharp
+  description: High performance Node.js image processing
+  package_url: https://www.npmjs.com/sharp
+  version: 0.32.6
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16806/default_31a4e0e11d348225088320f3a5c5ea6fa49c27ad.png
+  detection_source_url: https://github.com/ttrpgtools/ttrpg.tools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Colin Bate
+  last_updated_on: 2023-12-10 00:15:06.000000000 Z
 - name: tailwindcss
   description: A utility-first CSS framework for rapidly building custom user interfaces
   package_url: https://www.npmjs.com/tailwindcss
-  version: 3.3.3
+  version: 3.3.6
   license: MIT
   open_source: true
   hosted_saas: false
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/17398/default_2cd7ed1c123f2fca074a6f4b16c4e73d5bfe82be.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/ttrpgtools/ttrpg.tools/blob/main/package-lock.json
   detection_source: package.json
   last_updated_by: Colin Bate
-  last_updated_on: 2023-10-08 02:01:55.000000000 Z
-- name: toml
-  description: TOML parser for Node.js
-  package_url: https://www.npmjs.com/toml
-  version: 3.0.0
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/18079/image.png
-  detection_source_url: package-lock.json
-  detection_source: package.json
-  last_updated_by: Colin Bate
-  last_updated_on: 2023-03-14 03:34:24.000000000 Z
+  last_updated_on: 2023-12-07 20:57:12.000000000 Z
