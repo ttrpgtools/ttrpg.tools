@@ -1,17 +1,15 @@
 ---
-import type Date from '$part/Date.astro';
 import Footer from '$part/Footer.astro';
-import Hero from '$part/Hero.astro';
-import type Icon from '$part/Icon.svelte';
 import NavBar from '$part/NavBar.astro';
 import Seo from '$part/Seo.astro';
 import { config } from '$util/config';
 import { ViewTransitions } from 'astro:transitions';
+import type { ImageMetadata } from 'astro';
 export interface Props {
   head: {
     title: string;
     description: string;
-    socialImg?: string;
+    socialImg?: ImageMetadata;
   };
   proseFoot?: boolean;
 }

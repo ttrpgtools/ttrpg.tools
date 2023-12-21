@@ -7,7 +7,6 @@ interface Props {
 import { Image } from 'astro:assets';
 import Base from "$layout/Base.astro";
 import Section from '$part/Section.astro';
-import Date from '$part/Date.astro';
 import Icon from '$part/Icon.svelte';
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -28,9 +27,10 @@ const galleryImg = images && images.length ?
     path: string;
     caption?: string | undefined;
   }));
+const firstImg = galleryImg.length ? (await loaded[galleryImg[0].path]()).default : undefined;
 const { Content } = await gallery.render();
 ---
-<Base head={{title: gallery.data.title, description: gallery.data.excerpt ?? '' }} proseFoot={true}>
+<Base head={{title: gallery.data.title, description: gallery.data.excerpt ?? '', socialImg: firstImg }} proseFoot={true}>
   <Section>
     <div class="relative pt-px">
       <div class="flex flex-col gap-4 py-8 md:px-8 mx-auto max-w-prose box-content  bg-zinc-900">
@@ -38,7 +38,6 @@ const { Content } = await gallery.render();
         <div class="flex flex-row gap-4">
           <h1 class="text-4xl font-bold mb-2 font-serif" transition:name={`gallery-title-${gallery.slug}`}>{gallery.data.title}</h1>
         </div>
-        <Date date={gallery.data.date} />
         <div class="mt-2 prose prose-invert prose-a:text-blue-300 hover:prose-a:underline prose-a:no-underline prose-lg prose-headings:font-serif prose-headings:font-bold">
           <Content />
         </div>
@@ -47,7 +46,7 @@ const { Content } = await gallery.render();
         </div>
       </div>
       <ul class="grid gap-4 grid-cols-1 lg:grid-cols-2 xl:-mx-20 2xl:-mx-64">
-        {galleryImg.map(gi => <li><figure class="rounded-lg drop-shadow-lg bg-zinc-800"><Image src={loaded[gi.path]()} alt="Gallery image" class:list={["rounded-t-lg w-full object-cover", {'rounded-b-lg': !gi.caption}]} />{gi.caption && <figcaption class="px-5 py-3 text-center text-lg font-semibold">{gi.caption}</figcaption>}</figure></li>)}
+        {galleryImg.map((gi, i) => <li><figure class="rounded-lg drop-shadow-lg bg-zinc-800"><Image src={i === 0 ? firstImg! : loaded[gi.path]()} alt="Gallery image" class:list={["rounded-t-lg w-full object-cover", {'rounded-b-lg': !gi.caption}]} />{gi.caption && <figcaption class="px-5 py-3 text-center text-lg font-semibold">{gi.caption}</figcaption>}</figure></li>)}
       </ul>
     </div>
   </Section>
