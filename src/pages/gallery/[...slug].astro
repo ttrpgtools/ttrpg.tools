@@ -8,6 +8,7 @@ import { Image } from 'astro:assets';
 import Base from "$layout/Base.astro";
 import Section from '$part/Section.astro';
 import Icon from '$part/Icon.svelte';
+import { getFilenameOnly, titleCase } from '$util/string';
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const galleries = await getCollection('gallery');
@@ -15,15 +16,19 @@ export async function getStaticPaths() {
     params: { slug: gallery.slug }, props: { gallery },
   }));
 }
-
-// 2. When it's time to render, you can get the entry directly from the prop
+function deslug(filename: string) {
+  return filename.replace(/-/g, ' ');
+}
 const { gallery } = Astro.props;
 const { imageFolder, images } = gallery.data;
 const loaded = import.meta.glob<{ default: ImageMetadata; }>('/src/assets/**/*.{jpeg,jpg,png,webp}', { });
 const available = new Set(Object.keys(loaded));
 const galleryImg = images && images.length ?
   images.flatMap(img => available.has(`${imageFolder ?? ''}${img.path}`) ? [{...img, path: `${imageFolder ?? ''}${img.path}`}] : []) :
-  Object.keys(loaded).filter(path => path.startsWith(imageFolder ?? '')).map(path => ({path} as {
+  Object.keys(loaded).filter(path => path.startsWith(imageFolder ?? '')).map(path => ({
+    path,
+    caption: gallery.data.autocaption ? titleCase(deslug(getFilenameOnly(path))) : undefined
+  } as {
     path: string;
     caption?: string | undefined;
   }));

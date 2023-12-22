@@ -19,6 +19,7 @@ const gallery = defineCollection({
     excerpt: z.string().optional(),
     date: z.date(),
     aicontent: z.boolean().default(false),
+    autocaption: z.boolean().default(false),
     imageFolder: z.string().optional(),
     images: z.array(z.object({
       path: z.string(),
