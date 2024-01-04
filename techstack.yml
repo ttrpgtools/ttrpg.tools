@@ -1,7 +1,8 @@
 repo_name: ttrpgtools/ttrpg.tools
-report_id: cb2367119dd79cf57c44b8917065cefe
+report_id: c8e234cd48331cc0b44b4081a9422e4a
+version: 0.1
 repo_type: Public
-timestamp: '2023-12-14T09:57:51+00:00'
+timestamp: '2024-01-04T15:14:14+00:00'
 requested_by: colinbate
 provider: github
 branch: main
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/ttrpgtools/ttrpg.tools
   detection_source: Repo Metadata
 - name: TypeScript
   description: A superset of JavaScript that compiles to clean JavaScript output
@@ -26,6 +28,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source_url: https://github.com/ttrpgtools/ttrpg.tools
   detection_source: Repo Metadata
 - name: Node.js
   description: A platform built on Chrome's JavaScript runtime for easily building
@@ -36,6 +39,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+  detection_source_url: https://github.com/ttrpgtools/ttrpg.tools/blob/main/package.json
   detection_source: package.json
   last_updated_by: Colin Bate
   last_updated_on: 2023-03-04 05:28:30.000000000 Z
@@ -48,6 +52,7 @@ tools:
   category: Libraries
   sub_category: Javascript UI Libraries
   image_url: https://img.stackshare.io/service/6113/7exmJEg4_400x400.png
+  detection_source_url: https://github.com/ttrpgtools/ttrpg.tools/blob/main/package.json
   detection_source: package.json
   last_updated_by: Colin Bate
   last_updated_on: 2023-12-07 20:57:12.000000000 Z
@@ -60,6 +65,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Front-End Frameworks
   image_url: https://img.stackshare.io/service/8158/default_660b7c41c3ba489cb581eec89c04655404258c19.png
+  detection_source_url: https://github.com/ttrpgtools/ttrpg.tools/blob/main/package.json
   detection_source: package.json
   last_updated_by: Colin Bate
   last_updated_on: 2023-12-07 20:57:12.000000000 Z
@@ -71,6 +77,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/ttrpgtools/ttrpg.tools
   detection_source: Repo Metadata
 - name: npm
   description: The package manager for JavaScript.
@@ -80,6 +87,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Front End Package Manager
   image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/ttrpgtools/ttrpg.tools/blob/main/package.json
   detection_source: package.json
   last_updated_by: Colin Bate
   last_updated_on: 2023-03-04 05:28:30.000000000 Z
