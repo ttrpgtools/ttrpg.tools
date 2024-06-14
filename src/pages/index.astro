@@ -8,9 +8,9 @@ import Date from '$part/Date.astro';
 import { getCollection } from 'astro:content';
 
 const projects = await getCollection('projects');
-const posts = await getCollection('blog', ({ data }) => {
+const posts = (await getCollection('blog', ({ data }) => {
   return data.draft !== true;
-});
+})).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 ---
 
