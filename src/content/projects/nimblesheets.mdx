@@ -1,0 +1,25 @@
+---
+title: "Nimble Sheets"
+excerpt: "A character creator and sheet manager for the Nimble 2 RPG."
+tags: ["svelte", "cloudflare", "app", "dnd"]
+url: "https://nimblesheet.ttrpg.tools"
+icon:
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#dcdcdc"><path d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64Zm192 0v128h128L256 0ZM128 256c0-35.109 28.891-64 64-64s64 28.891 64 64-28.891 64-64 64-64-28.891-64-64ZM80 432c0-44.2 35.8-80 80-80h64c44.2 0 80 35.8 80 80 0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16Z" style="fill-rule:nonzero" transform="translate(64)"/></svg>
+---
+import { Image } from 'astro:assets'
+import screenshot from '$asset/nimblesheet-character-ui.png';
+
+If you are looking for a way to track your character in Evan Diaz's [Nimble 2 RPG][nim], then you are in the right spot.
+
+[nim]: https://nimblerpg.com/pages/nimble-2
+
+<Image src={screenshot} alt="Screenshot of the Nimble Sheet interface" />
+
+Provides basic character sheet tracking, along with NPC sheets and a simple encounter manager. In addition to working as a standalone tool, it is also a functional Owlbear Rodeo extension.
+
+Currently supports Beta version 1.8
+
+<a href="https://nimblesheet.ttrpg.tools" class="not-prose rounded-full px-6 py-3 bg-blue-500 text-white inline-flex gap-2 items-center justify-center">
+Open App
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" class="size-5"><path d="M384 32c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96C0 60.7 28.7 32 64 32l320 0zM160 144c-13.3 0-24 10.7-24 24s10.7 24 24 24l94.1 0L119 327c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l135-135L288 328c0 13.3 10.7 24 24 24s24-10.7 24-24l0-160c0-13.3-10.7-24-24-24l-152 0z"/></svg>
+</a>

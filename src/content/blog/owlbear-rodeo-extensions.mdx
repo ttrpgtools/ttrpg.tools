@@ -1,0 +1,27 @@
+---
+title: "Owlbear Rodeo Extensions"
+excerpt: "Exploring what it takes to add tools to Owlbear Rodeo VTT"
+date: 2024-10-29
+tags:
+  - obr
+  - dev
+  - extension
+banner:
+  src: /img/owlbear-extensions.avif
+  alt: "Owlbear Rodeo UI with a custom map and the Nimble Sheets extention"
+---
+import { Image } from 'astro:assets'
+
+I’m diving into the newly kickstarted Nimble 2 RPG system for my Movember charity games this year. It’s still in beta, so some tools, especially the Foundry VTT system, are unfinished. This meant I had to find a solution for tracking characters throughout our one-shot games. I wanted to make it simple and accessible, especially for new players unfamiliar with tabletop games, so they could create and track their characters without much fuss.
+
+To that end, I whipped up a “Nimble Sheet” tool—essentially an IndexedDB wrapper that stores character values and provides some assistance with setup. It doesn’t have all the bells and whistles of a polished character sheet tool but gives players what they need to start quickly. It’s a minimalist approach, letting players manage their sheet, click some buttons and roll dice.
+
+But as I worked on it, I thought: How could I integrate this more? I wanted to keep my tool completely client-side, but I still needed some map sharing, and I didn’t want to build a full virtual tabletop (VTT) experience myself. I’m not interested in that level of development right now. At a minimum, I wanted to connect the tool to a shared space to inject dice rolls or chat messages for everyone to see, adding more interaction without building a whole new platform.
+
+I’d cobbled solutions with whiteboards and other ad hoc tools in the past, but this time, I wanted something with a proper API. I’ve built Foundry modules before, but I was looking for something a bit lighter, ideally with the flexibility to call an API endpoint directly.
+
+After some research, I found Owlbear Rodeo’s extensions. I’d used Owlbear Rodeo before—both the original version and the newer 2.0—but hadn’t explored the extension functionality. It turns out that integrating an extension is straightforward, as it’s simply an iframe embedding the tool directly. Owlbear also has an API package that you can include in your code to interact with it as the “parent” app, which means it’s easy to link up with the shared space in Owlbear.
+
+Setting up the integration was straightforward, though living in an iframe has some quirks and limitations. I won’t get into all the details here, but I might write a follow-up post to share more as I dig deeper. I also created a separate dice log extension that operates alongside the character sheet. The two extensions can communicate, sending all rolls to the dice log where everyone in the game can view them. It’s a simple but effective solution, and I’ve found it convenient to deploy these little extensions just for my game. Plus, I can test them running on localhost during development, making the process smooth and hassle-free.
+
+If you use Owlbear Rodeo and have web development experience, I highly recommend exploring their extension API. There’s a lot of potential here, and if you’re like me—sitting at the intersection of tabletop gaming and web development—you’ll find it’s a great tool to enhance your games with custom features.
