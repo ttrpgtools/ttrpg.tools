@@ -4,9 +4,9 @@ import Section from "$part/Section.astro";
 import Date from '$part/Date.astro';
 import { getCollection } from "astro:content";
 
-const posts = await getCollection('blog', ({ data }) => {
+const posts = (await getCollection('blog', ({ data }) => {
   return data.draft !== true;
-});
+})).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 <Base head={{title: 'Blog', description: 'A list of posts on TTRPG.tools' }}>
 	<Section>
