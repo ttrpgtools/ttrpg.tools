@@ -1,8 +1,19 @@
 <script lang="ts">
-  export let icon: string | undefined;
-  export let size: string = '1rem';
-  $: href = `/icons.svg?1#${icon}`;
+  import { twMerge, type ClassNameValue } from "tailwind-merge";
+
+  type IconProps = {
+    icon: string;
+    class?: ClassNameValue;
+  };
+  let { icon, class: className }: IconProps = $props();
+
+  let href = $derived(`/icons.svg?7.5#${icon}`);
 </script>
+
 {#if icon}
-<svg preserveAspectRatio="xMidYMid meet" class="inline-block m-0 mt-0! leading-none" style:height={size} style:width={size}><use xlink:href={href}/></svg>
+  <svg
+    preserveAspectRatio="xMidYMid meet"
+    class={twMerge(`m-0 mt-0! inline-block size-4`, className)}
+    ><use xlink:href={href} {href} /></svg
+  >
 {/if}

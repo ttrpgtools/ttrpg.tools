@@ -39,7 +39,7 @@ const { Content } = await render(gallery);
   <Section>
     <div class="relative pt-px">
       <div class="flex flex-col gap-4 py-8 md:px-8 mx-auto max-w-prose box-content  bg-zinc-900">
-        {gallery.data.aicontent && <div class="p-4 rounded-sm bg-rose-700 text-white flex flex-row items-center gap-2"><Icon icon="warning" size="1.5rem" /> This gallery contains AI generated images.</div>}
+        {gallery.data.aicontent && <div class="p-4 rounded-sm bg-rose-700 text-white flex flex-row items-center gap-2"><Icon icon="warning" class="size-6" /> This gallery contains AI generated images.</div>}
         <div class="flex flex-row gap-4">
           <h1 class="text-4xl font-bold mb-2 font-serif" transition:name={`gallery-title-${gallery.id}`}>{gallery.data.title}</h1>
         </div>

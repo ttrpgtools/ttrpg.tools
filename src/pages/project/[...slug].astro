@@ -26,7 +26,7 @@ const { Content } = await render(entry);
       <div class="prose prose-invert prose-blue prose-lg prose-a:text-blue-300 prose-a:no-underline prose-a:hover:underline">
         <Content />
       </div>
-      {entry.data?.code && <a href={entry.data.code} target="_blank" rel="noopener" class="text-zinc-50"><Icon icon="github" size="1.5rem" /></a>}
+      {entry.data?.code && <a href={entry.data.code} target="_blank" rel="noopener" class="text-zinc-50"><Icon icon="github" class="size-6" /></a>}
       <a href="/" class="text-blue-300 hover:underline block mt-4">&larr; Home</a>
     </div>
   </Section>
