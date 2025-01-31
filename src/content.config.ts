@@ -23,6 +23,7 @@ const gallery = defineCollection({
       aicontent: z.boolean().default(false),
       autocaption: z.boolean().default(false),
       imageFolder: z.string().optional(),
+      captions: z.record(z.string(), z.string()).optional(),
       images: z
         .array(
           z.object({

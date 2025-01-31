@@ -20,14 +20,14 @@ function deslug(filename: string) {
   return filename.replace(/-/g, ' ');
 }
 const { gallery } = Astro.props;
-const { imageFolder, images } = gallery.data;
+const { imageFolder, images, captions } = gallery.data;
 const loaded = import.meta.glob<{ default: ImageMetadata; }>('/src/assets/**/*.{jpeg,jpg,png,webp}', { });
 const available = new Set(Object.keys(loaded));
 const galleryImg = images && images.length ?
   images.flatMap(img => available.has(`${imageFolder ?? ''}${img.path}`) ? [{...img, path: `${imageFolder ?? ''}${img.path}`}] : []) :
   Object.keys(loaded).filter(path => path.startsWith(imageFolder ?? '')).map(path => ({
     path,
-    caption: gallery.data.autocaption ? titleCase(deslug(getFilenameOnly(path))) : undefined
+    caption: captions?.[getFilenameOnly(path)] ?? (gallery.data.autocaption ? titleCase(deslug(getFilenameOnly(path))) : undefined)
   } as {
     path: string;
     caption?: string | undefined;

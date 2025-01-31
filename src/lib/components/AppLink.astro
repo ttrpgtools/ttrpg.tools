@@ -1,0 +1,13 @@
+---
+import Icon from "../partials/Icon.svelte";
+type Props = {
+  url: string;
+  label?: string;
+};
+
+const { url, label } = Astro.props;
+---
+<a href={url} class="not-prose rounded-full px-6 py-3 bg-blue-500 text-white inline-flex gap-2 items-center justify-center">
+  {label ?? 'Open App'}
+  <Icon icon="ext-link" class="size-5" />
+</a>
