@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 interface Props {
   gallery: CollectionEntry<'gallery'>;
@@ -13,7 +13,7 @@ import { getFilenameOnly, titleCase } from '$util/string';
 export async function getStaticPaths() {
   const galleries = await getCollection('gallery');
   return galleries.map(gallery => ({
-    params: { slug: gallery.slug }, props: { gallery },
+    params: { slug: gallery.id }, props: { gallery },
   }));
 }
 function deslug(filename: string) {
@@ -33,17 +33,17 @@ const galleryImg = images && images.length ?
     caption?: string | undefined;
   }));
 const firstImg = galleryImg.length ? (await loaded[galleryImg[0].path]()).default : undefined;
-const { Content } = await gallery.render();
+const { Content } = await render(gallery);
 ---
 <Base head={{title: gallery.data.title, description: gallery.data.excerpt ?? '', socialImg: firstImg }} proseFoot={true}>
   <Section>
     <div class="relative pt-px">
       <div class="flex flex-col gap-4 py-8 md:px-8 mx-auto max-w-prose box-content  bg-zinc-900">
-        {gallery.data.aicontent && <div class="p-4 rounded bg-rose-700 text-white flex flex-row items-center gap-2"><Icon icon="warning" size="1.5rem" /> This gallery contains AI generated images.</div>}
+        {gallery.data.aicontent && <div class="p-4 rounded-sm bg-rose-700 text-white flex flex-row items-center gap-2"><Icon icon="warning" size="1.5rem" /> This gallery contains AI generated images.</div>}
         <div class="flex flex-row gap-4">
-          <h1 class="text-4xl font-bold mb-2 font-serif" transition:name={`gallery-title-${gallery.slug}`}>{gallery.data.title}</h1>
+          <h1 class="text-4xl font-bold mb-2 font-serif" transition:name={`gallery-title-${gallery.id}`}>{gallery.data.title}</h1>
         </div>
-        <div class="mt-2 prose prose-invert prose-a:text-blue-300 hover:prose-a:underline prose-a:no-underline prose-lg prose-headings:font-serif prose-headings:font-bold">
+        <div class="mt-2 prose prose-invert prose-a:text-blue-300 prose-a:hover:underline prose-a:no-underline prose-lg prose-headings:font-serif prose-headings:font-bold">
           <Content />
         </div>
         <div>

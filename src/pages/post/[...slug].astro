@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -13,26 +13,26 @@ import Icon from '$part/Icon.svelte';
 export async function getStaticPaths() {
   const projects = await getCollection('blog');
   return projects.map(post => ({
-    params: { slug: post.slug }, props: { post },
+    params: { slug: post.id }, props: { post },
   }));
 }
 
 // 2. When it's time to render, you can get the entry directly from the prop
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 <Base head={{title: post.data.title, description: post.data.excerpt }} proseFoot={true}>
   <Section>
     <div class="relative pt-px">
       <img class="-z-10 object-cover w-full h-32 sm:h-64 md:h-96 md:absolute top-0" style={{objectPosition: post.data.banner.position || 'center'}} src={post.data.banner.src} alt={post.data.banner.alt}>
       <div class="flex flex-col gap-4 py-8 md:px-8 mx-auto max-w-prose box-content md:mt-48 bg-zinc-900">
-        {post.data.draft && <div class="p-4 rounded bg-rose-700 text-white flex flex-row items-center gap-2"><Icon icon="warning" size="1.5rem" /> This post is a draft. It is not intended to be shared.</div>}
+        {post.data.draft && <div class="p-4 rounded-sm bg-rose-700 text-white flex flex-row items-center gap-2"><Icon icon="warning" size="1.5rem" /> This post is a draft. It is not intended to be shared.</div>}
         <div class="flex flex-row gap-4">
-          <h1 class="text-4xl font-bold mb-2 font-serif" transition:name={`post-title-${post.slug}`}>{post.data.title}</h1>
+          <h1 class="text-4xl font-bold mb-2 font-serif" transition:name={`post-title-${post.id}`}>{post.data.title}</h1>
         </div>
         <Date date={post.data.date} />
         <Tags tags={post.data.tags} />
-        <div class="mt-2 prose prose-invert prose-a:text-blue-300 hover:prose-a:underline prose-a:no-underline prose-lg prose-headings:font-serif prose-headings:font-bold">
+        <div class="mt-2 prose prose-invert prose-a:text-blue-300 prose-a:hover:underline prose-a:no-underline prose-lg prose-headings:font-serif prose-headings:font-bold">
           <Content />
         </div>
         <a href="/" class="text-blue-300 hover:underline block mt-4">&larr; Home</a>

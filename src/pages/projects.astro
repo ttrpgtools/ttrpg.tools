@@ -11,7 +11,7 @@ const projects = await getCollection('projects');
     <h2 class="text-3xl font-serif font-bold mb-4">Projects</h2>
     <div class="flex flex-col gap-4">
       {projects.map(proj => (
-        <Project title={proj.data.title} url={proj.data.url} slug={proj.slug} excerpt={proj.data.excerpt} tags={proj.data.tags} icon={proj.data.icon} code={proj.data.code} />
+        <Project title={proj.data.title} url={proj.data.url} slug={proj.id} excerpt={proj.data.excerpt} tags={proj.data.tags} icon={proj.data.icon} code={proj.data.code} />
         ))}
     </div>
 	</Section>
