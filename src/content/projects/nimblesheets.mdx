@@ -9,6 +9,7 @@ icon = """\
 import { Image } from 'astro:assets'
 import AppLink from '$comp/AppLink.astro';
 import screenshot from '$asset/nimblesheet-character-ui2.webp';
+import menushot from '$asset/nimblesheet-menu.webp';
 
 If you are looking for a way to track your character in Evan Diaz's [Nimble 2 RPG][nim], then you are in the right spot.
 
@@ -17,6 +18,10 @@ If you are looking for a way to track your character in Evan Diaz's [Nimble 2 RP
 <Image src={screenshot} alt="Screenshot of the Nimble Sheet interface" />
 
 Provides basic character sheet tracking, along with NPC sheets and a simple encounter manager. In addition to working as a standalone tool, it is also a functional Owlbear Rodeo extension.
+
+<Image src={menushot} alt="Screenshot of the Nimble Sheet menu" class="float-right ml-6 mt-0" />
+
+Because it is in no way obvious, I will mention that clicking on the icon in the top left corner will allow you to access the NPC sheets and encounter manager. If you are using it in Owlbear Rodeo, this is also where the GM can access other player's shared sheets.
 
 Just note that all sheets created are stored locally in your browser. This means that they will be lost if you clear your browser's cache or switch to a different device.
 
