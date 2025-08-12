@@ -1,44 +1,54 @@
 ---
-import Footer from '$part/Footer.astro';
-import NavBar from '$part/NavBar.astro';
-import Seo from '$part/Seo.astro';
-import { config } from '$util/config';
-import { ClientRouter } from 'astro:transitions';
-import type { ImageMetadata } from 'astro';
-import 'src/style.css';
+import Footer from "$part/Footer.astro";
+import NavBar from "$part/NavBar.astro";
+import Seo from "$part/Seo.astro";
+import { config } from "$util/config";
+import { ClientRouter } from "astro:transitions";
+import type { ImageMetadata } from "astro";
+import "src/style.css";
 export interface Props {
-  head: {
-    title: string;
-    description: string;
-    socialImg?: ImageMetadata;
-  };
-  proseFoot?: boolean;
+    head: {
+        title: string;
+        description: string;
+        socialImg?: ImageMetadata;
+    };
+    proseFoot?: boolean;
 }
 const {
-  head: { title, description, socialImg },
-  proseFoot,
+    head: { title, description, socialImg },
+    proseFoot,
 } = Astro.props as Props;
 ---
 
-<html lang='en'>
-  <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=jetbrains-mono:400|recursive:400,700|merriweather:700" rel="stylesheet" />
-    <Seo title={title} description={description} img={socialImg} />
-    <meta name='author' content={config.author} />
-    <link rel='alternate' type='application/rss+xml' href='/rss.xml' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <ClientRouter />
-    <script src="https://beneficial-handsome.ttrpg.tools/script.js" data-site="GKYKKFRM" data-excluded-domains="localhost" defer></script>
-  </head>
-  <body class:list={['bg-zinc-900', 'text-gray-50', 'font-sans']} transition:animate="none">
-    <NavBar />
-    <main transition:animate="fade">
-      <slot></slot>
-      
-      <Footer prose={proseFoot} />
-    </main>
-  </body>
+<html lang="en" class="overflow-x-hidden">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.bunny.net" />
+        <link
+            href="https://fonts.bunny.net/css?family=jetbrains-mono:400|recursive:400,700|merriweather:700"
+            rel="stylesheet"
+        />
+        <Seo title={title} description={description} img={socialImg} />
+        <meta name="author" content={config.author} />
+        <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <ClientRouter />
+        <script
+            src="https://beneficial-handsome.ttrpg.tools/script.js"
+            data-site="GKYKKFRM"
+            data-excluded-domains="localhost"
+            defer></script>
+    </head>
+    <body
+        class:list={["bg-zinc-900", "text-gray-50", "font-sans"]}
+        transition:animate="none"
+    >
+        <NavBar />
+        <main transition:animate="fade">
+            <slot />
+
+            <Footer prose={proseFoot} />
+        </main>
+    </body>
 </html>
