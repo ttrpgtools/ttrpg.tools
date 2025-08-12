@@ -3,15 +3,37 @@ import Section from "./Section.astro";
 import Icon from "$part/Icon.svelte";
 import { config } from "$util/config";
 ---
+
 <Section>
-  <div class="flex items-start sm:items-center p-4 -m-4 group-[.has-hero]:bg-zinc-900/90">
-    <h1 class=""><a class="flex items-center gap-2 text-emerald-500" href="/"><Icon icon="logo" class="size-6"/><span class="text-xl">{config.title}</span></a></h1>
-    <nav class="grow text-right">
-      <ul class="flex flex-col sm:flex-row items-end sm:items-center gap-2 sm:gap-6 justify-end">
-        <li><a class="text-blue-300 hover:underline block" href="/projects">Projects</a></li>
-        <li><a class="text-blue-300 hover:underline block" href="/posts">Blog</a></li>
-        <!-- <li><a class="text-blue-300 hover:underline block" href="/resources">Resources</a></li> -->
-      </ul>
-    </nav>
-  </div>
+    <div
+        class="flex items-start sm:items-center p-4 -m-4 group-[.has-hero]:bg-zinc-900/90"
+    >
+        <h1 class="">
+            <a class="flex items-center gap-2 text-emerald-500" href="/"
+                ><Icon icon="logo" class="size-6" /><span class="text-xl"
+                    >{config.title}</span
+                ></a>
+        </h1>
+        <nav class="grow text-right">
+            <ul
+                class="flex flex-col sm:flex-row items-end sm:items-center gap-2 sm:gap-6 justify-end"
+            >
+                <li>
+                    <a
+                        class="text-blue-300 hover:underline block"
+                        href="/resources">Resources</a>
+                </li>
+                <li>
+                    <a
+                        class="text-blue-300 hover:underline block"
+                        href="/projects">Projects</a>
+                </li>
+                <li>
+                    <a class="text-blue-300 hover:underline block" href="/posts"
+                        >Blog</a>
+                </li>
+                <!-- <li><a class="text-blue-300 hover:underline block" href="/resources">Resources</a></li> -->
+            </ul>
+        </nav>
+    </div>
 </Section>

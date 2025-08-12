@@ -1,20 +1,26 @@
 ---
-import Icon from './Icon.svelte';
-import Section from './Section.astro';
+import Icon from "./Icon.svelte";
+import Section from "./Section.astro";
 
 export interface Props {
-  prose?: boolean;
+    prose?: boolean;
 }
-const {
-  prose,
-} = Astro.props as Props;
+const { prose } = Astro.props as Props;
 ---
+
 <Section>
-	<footer class="flex items-center justify-start" class:list={[{'max-w-prose': prose, 'mx-auto': prose}]}>
-		<div class="flex items-center justify-start gap-2 text-gray-300 border-gray-600 border-t py-5 pr-5">
-			<span>Crafted with</span>
-			<span title="love" class="relative -top-px text-rose-500"><Icon icon="heart" /></span>
-			<span>by Colin</span>
-		</div>
-	</footer>
+    <footer
+        class="flex items-center justify-start"
+        class:list={[{ "max-w-prose": prose, "mx-auto": prose }]}
+    >
+        <div
+            class="flex items-center justify-start gap-2 text-gray-300 border-gray-600 border-t py-5 pr-5"
+        >
+            <span>Crafted with</span>
+            <span title="love" class="relative -top-px text-rose-500"
+                ><Icon icon="heart" /></span
+            >
+            <span>in Bermuda</span>
+        </div>
+    </footer>
 </Section>

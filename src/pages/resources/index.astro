@@ -1,0 +1,139 @@
+---
+import Base from "$layout/Base.astro";
+import Section from "$part/Section.astro";
+import { getCollection } from "astro:content";
+import { sortGardenByDate } from "$util/sort";
+import Note from "$comp/resource/Note.astro";
+
+const gardenEntries = await getCollection("resources");
+
+// Sort by updated date (most recent first), then by created date
+const sortedEntries = gardenEntries.sort(sortGardenByDate);
+
+// Group entries by tags for the tag cloud
+const allTags = new Set<string>();
+gardenEntries.forEach((entry) => {
+    entry.data.tags?.forEach((tag) => allTags.add(tag));
+});
+const tagArray = Array.from(allTags).sort();
+---
+
+<Base
+    head={{
+        title: "TTRPG Resources",
+        description:
+            "A library of collected treasure for tabletop roleplaying games.",
+    }}
+>
+    <Section>
+        <main class="relative pt-px">
+            <div
+                class="bg-cover bg-[url(/img/library-ttrpg-resources.avif)] mb-6 sm:p-6 md:p-12"
+            >
+                <div
+                    class="max-w-prose px-4 sm:px-8 mx-auto py-12 box-content bg-zinc-900/70 sm:rounded-2xl text-center"
+                >
+                    <h1
+                        class="garden-hero-title text-3xl lg:text-6xl font-bold mb-6 leading-[1.2] font-serif"
+                    >
+                        🌱 TTRPG Resources
+                    </h1>
+                    <p
+                        class="text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed text-balance lg:text-2xl"
+                    >
+                        A library of collected treasure for tabletop roleplaying
+                        games.
+                    </p>
+                </div>
+            </div>
+
+            <div class="space-y-16">
+                <!-- Tag Cloud -->
+                {
+                    tagArray.length > 0 && (
+                        <section class="bg-zinc-900/30 rounded-2xl p-8 border border-white/10">
+                            <h2 class="text-2xl font-semibold text-white mb-8">
+                                Explore by Topic
+                            </h2>
+                            <div class="flex flex-wrap gap-3">
+                                {tagArray.map((tag) => {
+                                    const count = gardenEntries.filter(
+                                        (entry) =>
+                                            entry.data.tags?.includes(tag),
+                                    ).length;
+                                    return (
+                                        <a
+                                            href={`/tags/${tag}`}
+                                            class="tag-cloud-item inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-yellow-400/20 to-yellow-300/20 text-yellow-300 border border-yellow-400/30 cursor-pointer hover:from-yellow-400/30 hover:to-yellow-300/30 transition-all duration-200"
+                                            data-count={count}
+                                        >
+                                            {tag}
+                                        </a>
+                                    );
+                                })}
+                            </div>
+                        </section>
+                    )
+                }
+
+                <!-- Recent Entries -->
+                <section>
+                    <h2 class="text-2xl font-semibold text-white mb-8">
+                        Recent Updates
+                    </h2>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    >
+                        {sortedEntries.map((entry) => <Note entry={entry} />)}
+                    </div>
+                </section>
+            </div>
+        </main>
+    </Section>
+</Base>
+
+<style>
+    .garden-hero-title {
+        background: linear-gradient(
+            135deg,
+            #84cc16 0%,
+            #22d3ee 50%,
+            #a855f7 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .garden-nav-link {
+        color: var(--color-accent-400);
+        transition: color 0.2s;
+    }
+
+    .garden-nav-link:hover {
+        color: var(--color-accent-300);
+    }
+
+    .tag-cloud-item {
+        background: linear-gradient(
+            to right,
+            color-mix(in srgb, var(--color-accent-400) 20%, transparent),
+            color-mix(in srgb, var(--color-accent-300) 20%, transparent)
+        );
+        color: var(--color-accent-300);
+        border-color: color-mix(
+            in srgb,
+            var(--color-accent-400) 30%,
+            transparent
+        );
+        font-size: calc(0.75rem + 0.1rem * var(--count, 1));
+    }
+
+    .tag-cloud-item:hover {
+        background: linear-gradient(
+            to right,
+            color-mix(in srgb, var(--color-accent-400) 30%, transparent),
+            color-mix(in srgb, var(--color-accent-300) 30%, transparent)
+        );
+    }
+</style>

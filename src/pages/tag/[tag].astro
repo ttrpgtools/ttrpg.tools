@@ -1,0 +1,145 @@
+---
+import BaseLayout from "$layout/Base.astro";
+import Section from "$part/Section.astro";
+import { getCollection } from "astro:content";
+import Project from "$part/Project.astro";
+import Note from "$comp/resource/Note.astro";
+import Icon from "$part/Icon.svelte";
+import Date from "$part/Date.astro";
+
+export async function getStaticPaths() {
+    const allPosts = await getCollection("blog");
+    const allProjects = await getCollection("projects");
+    const allResources = await getCollection("resources");
+    const postTags = allPosts.map((post) => post.data.tags).flat();
+    const projTags = allProjects.map((proj) => proj.data.tags).flat();
+    const resourceTags = allResources
+        .map((resource) => resource.data.tags)
+        .flat();
+    const uniqueTags = [
+        ...new Set(postTags.concat(projTags).concat(resourceTags)),
+    ];
+
+    return uniqueTags.map((tag) => {
+        const filteredPosts = allPosts.filter((post) =>
+            post.data.tags.includes(tag),
+        );
+        const filteredProjs = allProjects.filter((proj) =>
+            proj.data.tags.includes(tag),
+        );
+        const filteredNotes = allResources.filter((resource) =>
+            resource.data.tags.includes(tag),
+        );
+        return {
+            params: { tag },
+            props: {
+                posts: filteredPosts,
+                projects: filteredProjs,
+                notes: filteredNotes,
+            },
+        };
+    });
+}
+
+const { tag } = Astro.params;
+const { posts, projects, notes } = Astro.props;
+---
+
+<BaseLayout
+    head={{
+        title: `Tagged ${tag}`,
+        description: `Posts, projects, and notes tagged with ${tag}`,
+    }}
+>
+    <Section>
+        <section aria-labelledby="header" class="relative overflow-hidden">
+            <div class="overflow-hidden relative">
+                <div class="px-8 mx-auto max-w-7xl mb-6">
+                    <h1
+                        class="text-white mt-4 font-semibold text-3xl font-serif lg:text-4xl tracking-tighter"
+                    >
+                        Tagged <span class="text-emerald-200">{tag}</span>
+                    </h1>
+                    <a
+                        href="/tags"
+                        class="text-blue-300 hover:underline block mt-4"
+                        >&larr; All Tags</a
+                    >
+                </div>
+            </div>
+        </section>
+        {
+            !!posts.length && (
+                <section>
+                    <div class="px-8 mx-auto max-w-7xl py-6">
+                        <h2 class="text-white font-semibold text-3xl tracking-tighter border-b border-accent-300 pb-5 mb-6 font-serif">
+                            <a href="/blog">
+                                Posts{" "}
+                                <Icon icon="pen-nib" class="size-8 ml-3" />
+                            </a>
+                        </h2>
+                        <ol role="list" class="space-y-3">
+                            {posts.map((post) => (
+                                <li aria-label="#">
+                                    <div class="bg-zinc-800 rounded-md p-2">
+                                        <a
+                                            class="text-blue-300 hover:underline block"
+                                            transition:name={`post-title-${post.id}`}
+                                            href={`/post/${post.id}/`}
+                                        >
+                                            {post.data.title}
+                                        </a>
+                                        <span class="text-zinc-400">
+                                            // <Date date={post.data.date} />
+                                        </span>
+                                    </div>
+                                </li>
+                            ))}
+                        </ol>
+                    </div>
+                </section>
+            )
+        }
+        {
+            !!notes.length && (
+                <section>
+                    <div class="px-8 mx-auto max-w-7xl py-6">
+                        <h2 class="text-white font-semibold text-3xl tracking-tighter border-b border-accent-300 pb-5 mb-6 font-serif">
+                            <a href="/resources">
+                                Resource
+                                <Icon
+                                    icon="seedling"
+                                    class="size-8 ml-3 text-emerald-400"
+                                />
+                            </a>
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {notes.map((note) => (
+                                <Note entry={note} />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )
+        }
+        {
+            !!projects.length && (
+                <section>
+                    <div class="px-8 mx-auto max-w-7xl py-6">
+                        <h2 class="text-white font-semibold text-3xl tracking-tighter border-b border-accent-300 pb-5 mb-6 font-serif">
+                            <a href="/projects">
+                                Projects
+                                <Icon icon="laptop-code" class="size-10 ml-3" />
+                            </a>
+                        </h2>
+                        <div class="space-y-6 max-w-5xl">
+                            {projects.map((proj) => (
+                                <Project {...proj.data} slug={proj.id} />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )
+        }
+    </Section>
+</BaseLayout>

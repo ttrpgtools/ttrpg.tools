@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from "astro:content";
+import ResourcePage from "../../lib/layout/ResourcePage.astro";
+
+export async function getStaticPaths() {
+    const gardenEntries = await getCollection("resources");
+    return gardenEntries.map((entry) => ({
+        params: { slug: entry.id.replace(/\.mdx?$/, "") },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<ResourcePage
+    entry={entry}
+    title={entry.data.title}
+    description={entry.data.description}
+>
+    <Content />
+</ResourcePage>

@@ -4,54 +4,92 @@ import { config } from "$util/config";
 import Section from "$part/Section.astro";
 import Social from "$part/Social.svelte";
 import Project from "$part/Project.astro";
-import Date from '$part/Date.astro';
-import { getCollection } from 'astro:content';
+import Date from "$part/Date.astro";
+import { getCollection } from "astro:content";
 
-const projects = await getCollection('projects');
-const posts = (await getCollection('blog', ({ data }) => {
-  return data.draft !== true;
-})).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
+const projects = await getCollection("projects");
+const posts = (
+    await getCollection("blog", ({ data }) => {
+        return data.draft !== true;
+    })
+).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<Base head={{title: config.title, description: config.description }}>
-	<Section>
-		<h2 class="font-bold text-4xl mb-6 font-serif">Hi there, I'm <span class="text-emerald-500">Colin</span></h2>
-		<div class="prose prose-invert prose-lg mb-6 prose-strong:text-emerald-500">
-			<p>
-				This is where I get to show off some of the things that I'm working on.
-				Those things might be <strong>apps</strong>, or simply game resources like
-				<strong>maps</strong> or <strong>random tables.</strong> My goal is to make
-				things that help you organize, run or play TTRPGs more easily.
-			</p>
-		</div>
-		<div class="flex gap-4 items-center">
-			<Social icon="patreon-new" colors="bg-white text-black" href="https://patreon.com/ttrpgtools/" />
-			<Social icon="discord" colors="bg-discord text-white" href="https://discord.gg/KFsS85zd5B" />
-			<Social icon="github" colors="bg-white text-black" href="https://github.com/ttrpgtools/" />
-		</div>
-	</Section>
-	<Section>
-		<div class="flex flex-col sm:flex-row gap-6">
-			<section class="basis-2/3 order-2 sm:order-1">
-				<h2 class="text-xl font-serif font-bold  mb-4">Projects</h2>
-				<div class="flex flex-col gap-4">
-					{projects.map(proj => (
-						<Project title={proj.data.title} url={proj.data.url} slug={proj.id} excerpt={proj.data.excerpt} tags={proj.data.tags} icon={proj.data.icon} code={proj.data.code} />
-						))}
-				</div>
-			</section>
-			<section class="order-1 sm:order-2">
-				<h2 class="text-xl font-serif font-bold  mb-4">Posts</h2>
-				<div class="flex flex-col gap-4 w-full">
-					{posts.map(post => (
-						<div class="bg-zinc-800 rounded-md p-2">
-							<a class="text-blue-300 hover:underline block" transition:name={`post-title-${post.id}`} href={`/post/${post.id}/`}>{post.data.title}</a>
-							<span class="text-zinc-400">// <Date date={post.data.date} /></span>
-						</div>
-					))}
-				</div>
-			</section>
-		</div>
-	</Section>
+<Base head={{ title: config.title, description: config.description }}>
+    <Section>
+        <h2 class="font-bold text-4xl mb-6 font-serif">
+            Hi there, I'm <span class="text-emerald-500">Colin</span>
+        </h2>
+        <div
+            class="prose prose-invert prose-lg mb-6 prose-strong:text-emerald-500 prose-a:text-blue-300 prose-a:hover:underline prose-a:no-underline"
+        >
+            <p>
+                This is where I get to show off some of the things that I'm
+                working on. Those things might be <a href="/projects">apps</a>,
+                or simply a <a href="/resources">collection of game resources</a
+                >. My goal is to make things that help you organize, run or play
+                TTRPGs more easily.
+            </p>
+        </div>
+        <div class="flex gap-4 items-center">
+            <Social
+                icon="patreon-new"
+                colors="bg-white text-black"
+                href="https://patreon.com/ttrpgtools/"
+            />
+            <Social
+                icon="discord"
+                colors="bg-discord text-white"
+                href="https://discord.gg/KFsS85zd5B"
+            />
+            <Social
+                icon="github"
+                colors="bg-white text-black"
+                href="https://github.com/ttrpgtools/"
+            />
+        </div>
+    </Section>
+    <Section>
+        <div class="flex flex-col sm:flex-row gap-6">
+            <section class="basis-2/3 order-2 sm:order-1">
+                <h2 class="text-xl font-serif font-bold mb-4">Projects</h2>
+                <div class="flex flex-col gap-4">
+                    {
+                        projects.map((proj) => (
+                            <Project
+                                title={proj.data.title}
+                                url={proj.data.url}
+                                slug={proj.id}
+                                excerpt={proj.data.excerpt}
+                                tags={proj.data.tags}
+                                icon={proj.data.icon}
+                                code={proj.data.code}
+                            />
+                        ))
+                    }
+                </div>
+            </section>
+            <section class="order-1 sm:order-2">
+                <h2 class="text-xl font-serif font-bold mb-4">Posts</h2>
+                <div class="flex flex-col gap-4 w-full">
+                    {
+                        posts.map((post) => (
+                            <div class="bg-zinc-800 rounded-md p-2">
+                                <a
+                                    class="text-blue-300 hover:underline block"
+                                    transition:name={`post-title-${post.id}`}
+                                    href={`/post/${post.id}/`}
+                                >
+                                    {post.data.title}
+                                </a>
+                                <span class="text-zinc-400">
+                                    // <Date date={post.data.date} />
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
+        </div>
+    </Section>
 </Base>

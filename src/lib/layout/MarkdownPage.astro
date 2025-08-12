@@ -1,0 +1,69 @@
+---
+import Base from "./Base.astro";
+import Section from "$part/Section.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Base
+    head={{
+        title: frontmatter.title,
+        description: frontmatter.description || "",
+        socialImg: frontmatter.banner,
+    }}
+>
+    <Section>
+        <main aria-labelledby="header" class="relative pt-px">
+            {
+                frontmatter.banner && (
+                    <img
+                        class="-z-10 object-cover w-full h-32 sm:h-64 md:h-96 md:absolute top-0"
+                        style={{
+                            objectPosition:
+                                frontmatter.banner?.position || "center",
+                        }}
+                        src={frontmatter.banner?.src}
+                        alt={frontmatter.banner?.alt}
+                    />
+                )
+            }
+            <div
+                class:list={[
+                    // Base padding — overridden in special wide/no-banner case
+                    !(frontmatter.wide && !frontmatter.banner) &&
+                        "px-4 sm:px-8",
+                    "py-12",
+
+                    // Width & centering
+                    !frontmatter.wide && "max-w-prose mx-auto",
+
+                    // Banner present
+                    frontmatter.banner && [
+                        "box-content bg-zinc-900/70 backdrop-blur-xs",
+                        frontmatter.wide
+                            ? "-mt-px -mx-px"
+                            : "rounded-2xl md:mt-24",
+                    ],
+
+                    // Banner absent
+                    !frontmatter.banner && [
+                        "md:mt-8",
+                        frontmatter.wide && "px-4 lg:px-0",
+                    ],
+                ]}
+            >
+                <div>
+                    <h1 class="text-4xl font-bold mb-2 font-serif">
+                        {frontmatter.title}
+                    </h1>
+                </div>
+
+                <div
+                    class="max-w-5xl mt-12 prose prose-invert prose-a:text-blue-300 prose-a:hover:underline prose-a:no-underline prose-lg prose-headings:font-serif prose-headings:font-bold prose-a:hover:text-accent-300 prose-blockquote:border-l-2 prose-blockquote:border-accent-400 prose-blockquote:font-light prose-blockquote:text-white/50 prose-code:text-accent-300/60 prose-p:max-w-prose prose-figcaption:pb-6 prose-figcaption:text-accent-300 prose-figcaption:text-base prose-h1:font-bold lg:prose-h1:text-4xl prose-h1:text-4xl prose-h1:tracking-tighter lg:prose-h4:text-2xl prose-h4:text-xl prose-headings:text-white prose-img:aspect-square prose-img:object-cover prose-img:w-full lg:prose-li:text-xl prose-li:marker:text-white prose-li:text-lg prose-mark:bg-accent-300 lg:prose-p:text-xl prose-p:text-lg prose-strong:text-white space-y-6 text-white/80 prose-table:divide-white/20 prose-hr:border-emerald-800"
+                >
+                    <div class=""><slot /></div>
+                </div>
+            </div>
+        </main>
+    </Section>
+</Base>

@@ -1,0 +1,130 @@
+---
+import Base from "./Base.astro";
+import Section from "$part/Section.astro";
+import {
+    getRelatedEntries,
+    getBacklinks,
+    type GardenEntry,
+} from "$util/garden-utils";
+import RelatedEntries from "$comp/resource/RelatedEntries.astro";
+
+import BackLinks from "$comp/resource/BackLinks.astro";
+export interface Props {
+    entry: GardenEntry;
+    title: string;
+    description?: string;
+}
+
+const { entry, title, description } = Astro.props;
+const slug = entry.id.replace(/\.mdx?$/, "");
+
+// Get related content
+const relatedEntries = await getRelatedEntries(entry);
+const backlinks = await getBacklinks(slug);
+
+// Format dates
+const created = entry.data.created
+    ? entry.data.created.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          timeZone: "UTC",
+      })
+    : null;
+
+const updated = entry.data.updated
+    ? entry.data.updated.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          timeZone: "UTC",
+      })
+    : null;
+---
+
+<Base
+    head={{
+        title,
+        description: description ?? title,
+    }}
+>
+    <Section>
+        <main aria-labelledby="header" class="relative pt-px">
+            <article>
+                {
+                    entry.data.banner && (
+                        <img
+                            class="-z-10 object-cover w-full h-32 sm:h-64 md:h-96 md:absolute top-0"
+                            style={{
+                                objectPosition:
+                                    entry.data.banner?.position || "center",
+                            }}
+                            src={entry.data.banner?.src}
+                            alt={entry.data.banner?.alt}
+                        />
+                    )
+                }
+                <div
+                    class:list={[
+                        `max-w-prose px-4 sm:px-8 mx-auto py-12`,
+                        entry.data.banner
+                            ? `box-content md:mt-24 bg-zinc-900/70 rounded-2xl`
+                            : `md:mt-8`,
+                    ]}
+                >
+                    <div>
+                        <h1
+                            class="text-4xl font-bold mb-2 font-serif"
+                            transition:name={`resource-title-${slug}`}
+                        >
+                            {title}
+                        </h1>
+                    </div>
+
+                    <div
+                        class="max-w-5xl mt-12 prose prose-invert prose-a:text-blue-300 prose-a:hover:underline prose-a:no-underline prose-lg prose-headings:font-serif prose-headings:font-bold prose-a:hover:text-accent-300 prose-blockquote:border-l-2 prose-blockquote:border-accent-400 prose-blockquote:font-light prose-blockquote:text-white/50 prose-code:text-accent-300/60 prose-p:max-w-prose prose-figcaption:pb-6 prose-figcaption:text-accent-300 prose-figcaption:text-base prose-h1:font-bold lg:prose-h1:text-4xl prose-h1:text-4xl prose-h1:tracking-tighter lg:prose-h4:text-2xl prose-h4:text-xl prose-headings:text-white prose-img:aspect-square prose-img:object-cover prose-img:w-full lg:prose-li:text-xl prose-li:marker:text-white prose-li:text-lg prose-mark:bg-accent-300 lg:prose-p:text-xl prose-p:text-lg prose-strong:text-white space-y-6 text-white/80 prose-table:divide-white/20 prose-hr:border-emerald-800"
+                    >
+                        <div class=""><slot /></div>
+                    </div>
+                    <section
+                        class="flex justify-between items-center mt-8 bg-white/5 p-4 rounded-md"
+                    >
+                        {
+                            created && (
+                                <div class="flex items-center gap-2">
+                                    <span class="text-zinc-500">Created:</span>
+                                    <time
+                                        datetime={entry.data.created.toISOString()}
+                                    >
+                                        {created}
+                                    </time>
+                                </div>
+                            )
+                        }
+                        {
+                            updated && (
+                                <div class="flex items-center gap-2">
+                                    <span class="text-zinc-500">Updated:</span>
+                                    <time
+                                        datetime={entry.data.updated?.toISOString()}
+                                    >
+                                        {updated}
+                                    </time>
+                                </div>
+                            )
+                        }
+                    </section>
+                </div>
+            </article>
+            <aside class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                {
+                    relatedEntries.length > 0 && (
+                        <RelatedEntries entries={relatedEntries} />
+                    )
+                }
+
+                {backlinks.length > 0 && <BackLinks backlinks={backlinks} />}
+            </aside>
+        </main>
+    </Section>
+</Base>

@@ -29,7 +29,7 @@ const gallery = defineCollection({
           z.object({
             path: z.string(),
             caption: z.string().optional(),
-          })
+          }),
         )
         .optional(),
     })
@@ -52,8 +52,32 @@ const blog = defineCollection({
   }),
 });
 
+const resources = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/resources",
+  }),
+  schema: z.object({
+    title: z.string(),
+    created: z.date(),
+    updated: z.date().optional(),
+    tags: z.array(z.string()).default([]),
+    aliases: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+    description: z.string().optional(),
+    banner: z
+      .object({
+        src: z.string(),
+        alt: z.string(),
+        position: z.string().optional(),
+      })
+      .optional(),
+  }),
+});
+
 export const collections = {
   blog,
   projects,
   gallery,
+  resources,
 };

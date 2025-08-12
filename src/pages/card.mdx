@@ -1,0 +1,33 @@
++++
+layout = "../lib/layout/MarkdownPage.astro"
+title = "You Found a Card!"
+wide = true
++++
+import Social from '$part/Social.svelte';
+
+<img src="/img/card.avif" alt="Card" class="sm:absolute not-prose top-0 right-0 mb-6 sm:shadow-lg shadow-emerald-500 rounded-3xl border border-emerald-500 sm:rotate-[10deg] sm:scale-50 origin-top-right" />
+So you scanned the back of a card. Welcome.
+
+If you are coming from one of the intro sessions I hosted, you may find my [TTRPG Resources](/resources/welcome) to be a great place to start.
+
+If you were looking to get in touch with me, well, my [email address](mailto:colin@ttrpg.tools) is on the card :).
+
+Or you can find TTRPG Tools in the following places:
+
+<div class="flex gap-4 items-center not-prose">
+    <Social
+        icon="patreon-new"
+        colors="bg-white text-black"
+        href="https://patreon.com/ttrpgtools/"
+    />
+    <Social
+        icon="discord"
+        colors="bg-discord text-white"
+        href="https://discord.gg/KFsS85zd5B"
+    />
+    <Social
+        icon="github"
+        colors="bg-white text-black"
+        href="https://github.com/ttrpgtools/"
+    />
+</div>
