@@ -1,0 +1,78 @@
+---
+const { nextSlide, prevSlide } = Astro.props;
+---
+
+<script>
+    import { navigate } from "astro:transitions/client";
+    // Fetch navigation URLs from anchor elements
+    function getUrls() {
+        const prevSlideElement = document.querySelector(
+            "#prev-slide",
+        ) as HTMLAnchorElement;
+        const nextSlideElement = document.querySelector(
+            "#next-slide",
+        ) as HTMLAnchorElement;
+        const prevSlideUrl = prevSlideElement?.href;
+        const nextSlideUrl = nextSlideElement?.href;
+        return {
+            prevSlideUrl,
+            nextSlideUrl,
+        };
+    }
+
+    let { prevSlideUrl, nextSlideUrl } = getUrls();
+
+    document.addEventListener("keydown", async (e) => {
+        if (e.key === "ArrowRight" && nextSlideUrl) {
+            await navigate(nextSlideUrl);
+            const x = getUrls();
+            nextSlideUrl = x.nextSlideUrl;
+            prevSlideUrl = x.prevSlideUrl;
+        } else if (e.key === "ArrowLeft" && prevSlideUrl) {
+            await navigate(prevSlideUrl);
+            const x = getUrls();
+            nextSlideUrl = x.nextSlideUrl;
+            prevSlideUrl = x.prevSlideUrl;
+        } else if (e.key === "Escape") {
+            // Optional: exit slideshow mode
+            await navigate("/");
+        }
+    });
+
+    // Prevent scrolling with arrow keys
+    document.addEventListener("keydown", (e) => {
+        if (
+            [
+                "ArrowUp",
+                "ArrowDown",
+                "ArrowLeft",
+                "ArrowRight",
+                "Space",
+            ].includes(e.key)
+        ) {
+            e.preventDefault();
+        }
+    });
+</script>
+{
+    prevSlide && (
+        <a
+            id="prev-slide"
+            href={prevSlide}
+            class="fixed bottom-4 left-4 text-sm text-gray-400"
+        >
+            ← Previous
+        </a>
+    )
+}
+{
+    nextSlide && (
+        <a
+            id="next-slide"
+            href={nextSlide}
+            class="fixed bottom-4 right-4 text-sm text-gray-400"
+        >
+            Next →
+        </a>
+    )
+}
