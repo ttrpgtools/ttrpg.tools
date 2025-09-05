@@ -1,0 +1,84 @@
++++
+title = "Creating Custom Tokens"
+excerpt = "Learn how to generate a nice digital token of your TTRPG character."
+date = 2025-09-05
+tags = ["ai", "howto", "asset"]
+slug = "create-custom-tokens"
+[banner]
+src = "/img/circle-token-header.avif"
+alt = "A collection of overlapping circular character tokens."
++++
+
+There is a page on [Token Builders](/resources/token-builders) in the resources section. On there, I mentioned combining an existing image with a border to create a token.
+
+However, it is possible, using generative AI nowadays, to create an image with that border already in place. In fact, I've created a custom [Circle Token Builder GPT](https://chatgpt.com/g/g-68ba45f78d048191825d8aadd18930d0-ttrpg-circle-token-builder) to enable me to do just that. So let me walk through the steps of creating a custom circle token for your character.
+
+## 1. Describe your character
+
+Coming up with a description (known as a prompt) for your character is the first step. If you don't have any particular picture in your head for what your character looks like, then start with the basics. Use the character's gender, ancestry, and class (or background/profession), along with a mention of anything they may typically carry, such as a weapon or pet.
+
+Here are some examples with increasing detail:
+
+> A halfling monk with flowing orange robes holding a quarter staff.
+
+> A female white-furred cat-folk with black tiger striping, she is a druid wearing slightly tattered brown robes and a flowery necklace holding a gnarled wooden staff.
+
+> A male golden dragonborn with gold draconic eyes, one of which is slightly milky. He is a paladin wearing full plate armor, buffed to a mirror finish with a draconic house symbol etched into one breastplate. He is carrying his plumed helmet under one arm and in the other carrying a large halberd. There is a slight glow emanating from behind him.
+
+Any of these is a fine starting point for creating your character portrait.
+
+## 2. Generate the token
+
+Now you can visit my custom [Circle Token Builder GPT](https://chatgpt.com/g/g-68ba45f78d048191825d8aadd18930d0-ttrpg-circle-token-builder) in your browser. You will need an account with ChatGPT for this. If you don't have one, it should prompt you to sign up. A free account should be fine for this.
+
+Once you are signed in, you should have access to the GPT, which should show something like this (yours may be black text on a white background):
+
+![TTRPG Circle Token Build with logo](/img/circle-token-gpt-screen.avif)
+
+Below that, at the bottom of the browser window, will be a text box with the placeholder: "Ask anything". That is where you can type your character description you created. Hit enter, and it should start working on the image.
+
+It will probably print out some text, which is my extra instructions for making it into a nice circle token. After which, you should see something like this:
+
+![Screen shot of ChatGPT creating image](/img/circle-token-generating.avif)
+
+That is your image placeholder. After a few moments, ChatGPT will replace it with your circle token.
+
+If the result isn't quite to your liking, you can ask it to make some changes. It will regenerate the image again. Hopefully, you end up with something that matches your idea of the character.
+
+Once you are happy, hovering over the image will show some icons, one of which is a download icon. Click that, and you will have your very own circle token.
+
+![Alfie the halfling monk](/img/alfie.avif)
+
+## 3. Resize appropriately
+
+Despite asking ChatGPT for something smaller, it still tends to generate images that are about 2 megabytes in file size. That is far bigger than they need to be, and certainly bigger than you'd want to use for a token that everyone's going to need to download. Especially when there's going to be multiple of them. The next step is to resize the file you created to the correct size for use in the VTT.
+
+Go to https://squoosh.app/ in your browser.
+
+Once there, drag and drop your recently downloaded AI token onto the page.
+
+In the lower right corner of your page, there should be a configuration panel that lets you change how you are going to resize and compress this image. Under the "Compress" header, there should be a drop-down which, by default, might say something like "MozJPEG". Click on that drop-down and select "WebP".
+
+Once you've done that, you can go to the top of the configuration panel and click the toggle next to "Resize". Once you do that, it will expand, and you can change the width and the height to 256. That should be about the right size for your needs. If your Game Master has given you a specific size, then of course you can enter that one. Since the image should be square, once you enter the size for width, the height will update automatically to match.
+
+You should be able to see at the bottom of this panel how small your image is now and how much smaller it is, in percentage terms, compared to the original. In my case, I managed to get it 99% smaller. That's a huge savings.
+
+![Control panel from Squoosh.app](/img/circle-token-squoosh.avif)
+
+Finally, you can click on that blue download button in the bottom right corner, and now you should have your final token. You can save it for later or send it to your Game Master so they can add it to your virtual tabletop (VTT).
+
+<div class="grid grid-cols-2 gap-4 not-prose">
+
+<div class="flex flex-col items-center max-w-64 gap-4">
+
+![Canoa the catfolk druid](/img/canoa.avif)
+
+</div>
+
+<div class="flex flex-col items-center max-w-64 gap-4">
+
+![Zevdar the dragonborn paladin](/img/zevdar.avif)
+
+</div>
+
+</div>
