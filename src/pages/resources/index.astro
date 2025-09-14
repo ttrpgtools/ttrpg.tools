@@ -4,6 +4,7 @@ import Section from "$part/Section.astro";
 import { getCollection } from "astro:content";
 import { sortGardenByDate } from "$util/sort";
 import Note from "$comp/resource/Note.astro";
+import Icon from "$part/Icon.svelte";
 
 const gardenEntries = await getCollection("resources");
 
@@ -36,7 +37,10 @@ const tagArray = Array.from(allTags).sort();
                     <h1
                         class="garden-hero-title text-3xl lg:text-6xl font-bold mb-6 leading-[1.2] font-serif"
                     >
-                        🌱 TTRPG Resources
+                        <Icon
+                            icon="gears"
+                            class="text-emerald-500 size-12 relative -top-1.5"
+                        /> TTRPG Resources
                     </h1>
                     <p
                         class="text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed text-balance lg:text-2xl"
@@ -96,9 +100,9 @@ const tagArray = Array.from(allTags).sort();
     .garden-hero-title {
         background: linear-gradient(
             135deg,
-            #84cc16 0%,
-            #22d3ee 50%,
-            #a855f7 100%
+            oklch(59.6% 0.145 163.225) 0%,
+            oklch(78.9% 0.154 211.53) 50%,
+            oklch(62.7% 0.265 303.9) 100%
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;

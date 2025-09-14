@@ -7,6 +7,7 @@ import {
     type GardenEntry,
 } from "$util/garden-utils";
 import RelatedEntries from "$comp/resource/RelatedEntries.astro";
+import Icon from "$part/Icon.svelte";
 
 import BackLinks from "$comp/resource/BackLinks.astro";
 export interface Props {
@@ -78,6 +79,10 @@ const updated = entry.data.updated
                             transition:name={`resource-title-${slug}`}
                         >
                             {title}
+                            <Icon
+                                icon="gears"
+                                class="text-emerald-500 size-12 relative -top-1.5"
+                            />
                         </h1>
                     </div>
 

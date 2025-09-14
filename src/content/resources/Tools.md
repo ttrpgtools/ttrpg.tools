@@ -2,7 +2,7 @@
 title = "Tools"
 slug = "tools"
 created = 2025-08-11
-updated = 2025-09-04
+updated = 2025-09-13
 tags = []
 aliases = []
 +++
@@ -15,6 +15,7 @@ Some of these categories are large enough to warrant their own page.
 
 - [[Virtual Tabletops]] - Apps and websites that allow groups to play online using digital maps and tokens.
 - [[Token Builders]] - Tools to help create a digital representation of your characters.
+- [[Map Making]] - If pre-existing digital maps don't meet your needs it is possible to create your own with some of these tools.
 
 
 ## Dice Rollers
