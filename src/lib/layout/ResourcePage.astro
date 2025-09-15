@@ -19,6 +19,11 @@ export interface Props {
 const { entry, title, description } = Astro.props;
 const slug = entry.id.replace(/\.mdx?$/, "");
 
+// Split title into main part and last word
+const titleWords = title.split(" ");
+const lastWord = titleWords[titleWords.length - 1];
+const titleWithoutLastWord = titleWords.slice(0, -1).join(" ");
+
 // Get related content
 const relatedEntries = await getRelatedEntries(entry);
 const backlinks = await getBacklinks(slug);
@@ -67,9 +72,9 @@ const updated = entry.data.updated
                 }
                 <div
                     class:list={[
-                        `max-w-prose px-4 sm:px-8 mx-auto py-12`,
+                        `max-w-prose sm:px-8 mx-auto pb-4 sm:py-12`,
                         entry.data.banner
-                            ? `box-content md:mt-24 bg-zinc-900/70 rounded-2xl`
+                            ? `box-content md:mt-24 bg-zinc-900/70 rounded-2xl py-4`
                             : `md:mt-8`,
                     ]}
                 >
@@ -78,11 +83,13 @@ const updated = entry.data.updated
                             class="text-4xl font-bold mb-2 font-serif"
                             transition:name={`resource-title-${slug}`}
                         >
-                            {title}
-                            <Icon
-                                icon="gears"
-                                class="text-emerald-500 size-12 relative -top-1.5"
-                            />
+                            {titleWithoutLastWord}
+                            <span class="whitespace-pre inline-flex gap-1"
+                                >{lastWord}<Icon
+                                    icon="gears"
+                                    class="text-emerald-500 size-12 relative -top-1.5"
+                                /></span
+                            >
                         </h1>
                     </div>
 
@@ -96,7 +103,7 @@ const updated = entry.data.updated
                     >
                         {
                             created && (
-                                <div class="flex items-center gap-2">
+                                <div class="flex items-start flex-col sm:flex-row sm:items-center gap-2">
                                     <span class="text-zinc-500">Created:</span>
                                     <time
                                         datetime={entry.data.created.toISOString()}
@@ -108,7 +115,7 @@ const updated = entry.data.updated
                         }
                         {
                             updated && (
-                                <div class="flex items-center gap-2">
+                                <div class="flex items-start flex-col sm:flex-row sm:items-center gap-2">
                                     <span class="text-zinc-500">Updated:</span>
                                     <time
                                         datetime={entry.data.updated?.toISOString()}

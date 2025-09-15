@@ -39,6 +39,7 @@
         position: relative;
         transition: color 0.2s;
         padding-right: 1.5rem;
+        white-space: pre;
     }
 
     .wikilink::after {

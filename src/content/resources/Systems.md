@@ -3,13 +3,13 @@ title = "Systems"
 slug = "systems"
 created = 2025-08-11
 updated = 2025-09-13
-tags = []
+tags = ["systems"]
 aliases = []
 +++
 
-There are so many TTRPG systems out there in all sorts of different genres. I've only had the pleasure of playing in a few of them, but I'm going to try and record as many as I can here with links to find more information. Some are free, some are not, and I will try and provide summary information if I know it.
+There are so many TTRPG systems out there in all sorts of different genres. I've only had the pleasure of playing in a few of them, but I'll try to record as many as I can here, along with links to find more information. Some are free, some are not, and I will try to provide summary information if I know it.
 
-Some systems may not have a particular genre, as in they may be genre agnostic and I'll try and mention that where possible. But generally speaking, if a system has a primary genre, that's where I'll put it.
+Some systems may not have a particular genre, as in they may be genre agnostic, and I'll mention that where possible. But generally speaking, if a system has a primary genre, that's where I'll put it.
 
 Some systems may have [[Starter Kits]] available to get you up and running quickly or let you test the game before buying.
 

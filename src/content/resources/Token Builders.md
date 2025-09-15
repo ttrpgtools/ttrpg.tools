@@ -6,7 +6,7 @@ tags = ["tools", "tokens"]
 aliases = []
 +++
 
-A token is something that represents your character on a map. For play using a virtual tabletop, like one of the ones listed above, you will use a digital token. There are different styles of token. It can be something as simple as just a colored dot or an icon or something more photo-realistic that represents your character's image. It could even be a 3D model of your character. Typically though they come in one of two general styles:
+A token is something that represents your character on a map. For play using a virtual tabletop, like one of the ones listed above, you will use a digital token. There are different styles of tokens. It can be something as simple as just a colored dot or an icon or something more photo-realistic that represents your character's image. It could even be a 3D model of your character. Typically, though, they come in one of two general styles:
 
 <div class="grid grid-cols-2 gap-4 not-prose">
 
@@ -45,16 +45,16 @@ This first group of tools allow you to upload an image and it will add the borde
 
 ## Character Avatar Builders
 
-There is another group of tools which let you build your character image from scratch, usually composing a collection of pre-built designs to arrive at your character concept. These tools may provide their own dedicated circle token export, or may just provide the regular image which you can use with the tools above.
+There is another group of tools that let you build your character image from scratch, typically by composing a collection of pre-built designs to arrive at your character concept. These tools may provide their own dedicated circle token export or may provide the regular image, which you can use with the tools above.
 
 - [Hero Forge](https://www.heroforge.com) - create 3D models of your character. Quite customizable. Can be used to order 3D printed versions of your character design. 
 - [Titan Craft](https://titancraft.com/) - another tool for creating custom 3D models of characters.
 - [Eldritch Foundry](https://eldritch-foundry.com/) - create 3D characters for digital or printing use.
 - [Anvl](https://anvl.co/) - more 3D character model building.
-- [The Character Creator](https://charactercreator.org) - create custom 2D images of characters choosing from various styles and body parts. Only human characters supported.
+- [The Character Creator](https://charactercreator.org) - create custom 2D images of characters, choosing from various styles and body parts. Only human characters are supported.
 - [Reroll](https://reroll.co/) - create pixel art versions of your characters.
 - [Avatars in Pixels](https://www.avatarsinpixels.com/) - various styles of pixel avatars. Not as many ancestry options as dedicated TTRPG tools.
 
-It is worth noting that you should always check the licenses provided by these tools, as often you may not use your creations for commercial purposes. That's fine for private games, but can have implications for people who want to stream their games, etc.
+You should always check the licenses provided by these tools, as you may not be allowed to use your creations for commercial purposes. That's fine for private games, but it can have implications for people who want to stream their games, etc.
 
-If you just want premade [[Token Collections]], those are available too. They are more popular with Game Masters as they typically include  monsters, beasts and other non-player characters (NPCs).
+If you want premade tokens, those are available too. Check out the artists on the [[Assets]] page. They are more popular with Game Masters as they typically include monsters, beasts and other non-player characters (NPCs).

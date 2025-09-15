@@ -2,8 +2,8 @@
 title = "Starter Kits"
 slug = "starter-kits"
 created = 2025-09-12
-updated = 2025-09-13
-tags = []
+updated = 2025-09-15
+tags = ["systems"]
 aliases = []
 +++
 
@@ -15,6 +15,8 @@ aliases = []
 - [ICRPG](https://icrpgcommunitycontent.com) (fantasy) - Free quick start and a lot of community content.
 - [DC20](https://thedungeoncoach.com/pages/dc20-free-downloads) (fantasy) - Playtest rules preview + one-shot adventure.
 - [Savage Worlds](https://peginc.com/product/deadlands-the-weird-west-blood-on-the-range-savage-worlds-test-drive-swade) (weird west) - Generally a more genre neutral system, this free kit can get you started with everything you need.
+- [Fabula Ultima](https://www.drivethrurpg.com/en/product/411240/fabula-ultima-ttjrpg-press-start) (JRPG) - Basic rules, pre-gen characters and an introductory adventure.
+- [Dungeons & Dragons](https://www.dndbeyond.com/how-to-play-dnd) (fantasy) - Intro videos, free rules and a free adventure.
 
 
 ## Starter Box Sets
