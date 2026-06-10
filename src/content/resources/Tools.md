@@ -45,3 +45,7 @@ Some tools help guide you through the creative process with prompts for various 
 
 - https://gmassistant.app/ - Upload audio recordings of your sessions to get session notes. (AI-based)
 - [Kenku FM](https://www.kenku.fm) - Play music from your computer into your Discord calls.
+
+## Character Tools
+
+- [Roll Up a Character](https://rollupacharacter.com) - Free AI D&D 5e character creator. Describe a character in a sentence and get a full sheet with a portrait, a backstory, and Foundry/Roll20 export. 2024 and 2014 rules, levels 1 to 20, no login.
