@@ -1,0 +1,18 @@
++++
+title = "Keeper's Call Sheets"
+excerpt = "A character creator and sheet manager for the Keeper's Call RPG."
+tags = ["svelte", "cloudflare", "app", "nsr"]
+url = "https://keepers-call.ttrpg.tools"
+code = "https://github.com/ttrpgtools/keepers-call/"
+icon = """\
+  <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="512" height="512" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" class="w-full h-full" viewBox="0 0 512 512"><path d="M.495-.018.312-.427l.173-.355Q.492-.799.474-.8H.359q-.012 0-.017.011l-.157.318v-.314Q.185-.799.17-.8H.065Q.051-.8.05-.785v.77q0 .014.015.015H.17q.014 0 .015-.015v-.206q0-.02.01-.037L.223-.31l.127.299Q.355.001.367 0h.117q.017 0 .011-.018" style="fill:#0090ff;fill-rule:nonzero" transform="translate(5.827 459.598)scale(508.9968)"/><path d="M.18.005h.14c.084 0 .13-.046.13-.13v-.13q0-.014-.015-.015H.33q-.014 0-.015.015v.1q0 .03-.03.03h-.07q-.03 0-.03-.03v-.49q0-.03.03-.03h.07q.03 0 .03.03v.1q0 .014.015.015h.105q.014 0 .015-.015v-.13Q.448-.803.32-.805H.18c-.084 0-.13.046-.13.13v.55c0 .084.046.13.13.13" style="fill:#0090ff;fill-rule:nonzero" transform="translate(251.672 459.598)scale(508.9968)"/></svg>"""
++++
+import AppLink from '$comp/AppLink.astro';
+import { Image } from 'astro:assets';
+import screenshot from '$asset/keepers-call-sheet-ui.webp';
+
+A simple character sheet manager for [JP Coovert's](https://jpcoovert.com/) [Keeper's Call RPG](https://jpcoovert.com/products/keepers-call).
+
+<Image src={screenshot} alt="Screenshot of the Nimble Sheet interface" />
+
+<AppLink url={frontmatter.url} />

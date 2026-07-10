@@ -83,7 +83,7 @@ const updated = entry.data.updated
                             class="text-4xl font-bold mb-2 font-serif"
                             transition:name={`resource-title-${slug}`}
                         >
-                            {titleWithoutLastWord}
+                            {titleWithoutLastWord && <span>{titleWithoutLastWord}&nbsp;</span>}
                             <span class="whitespace-pre inline-flex gap-1"
                                 >{lastWord}<Icon
                                     icon="gears"
