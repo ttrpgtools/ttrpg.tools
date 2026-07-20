@@ -2,7 +2,7 @@
 title = "Starter Kits"
 slug = "starter-kits"
 created = 2025-09-12
-updated = 2025-09-15
+updated = 2026-07-14
 tags = ["systems"]
 aliases = []
 +++
@@ -17,9 +17,10 @@ aliases = []
 - [Savage Worlds](https://peginc.com/product/deadlands-the-weird-west-blood-on-the-range-savage-worlds-test-drive-swade) (weird west) - Generally a more genre neutral system, this free kit can get you started with everything you need.
 - [Fabula Ultima](https://www.drivethrurpg.com/en/product/411240/fabula-ultima-ttjrpg-press-start) (JRPG) - Basic rules, pre-gen characters and an introductory adventure.
 - [Dungeons & Dragons](https://www.dndbeyond.com/how-to-play-dnd) (fantasy) - Intro videos, free rules and a free adventure.
+- [Mork Borg](https://drive.google.com/file/d/1GcysVYxEklrDCva3gSkYqXvS2vy3Kbdu/view?usp=sharing) (dark fantasy) - The Bare Bones edition is free to use to see if you like the game. [Direct link to Google Drive]
+- [Call of Cthulhu](https://www.chaosium.com/cthulhu-quickstart/) (eldritch horror) - The Quick Start rules provide a chance to try out the system before committing. Includes an introductory adventure.
 
-
-## Starter Box Sets
-
+## Starter Box Sets (paid)
 
 - [D&D Heros of the Borderlands](https://marketplace.dndbeyond.com/category/4705000) (fantasy) - Being dubbed a "board game", this box set in digital or physical form has everything you need to get started.
+- [Pathfinder Beginner Box](https://store.paizo.com/pathfinder-beginner-box-secrets-of-the-unlit-star/) (fantasy) - Has everything you need to get started playing Pathfinder 2E. Dice, rules for players and GM, premade characters and cardboard tokens.
