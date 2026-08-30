@@ -1,35 +1,166 @@
 ---
-import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
+import { getCollection, render } from "astro:content";
+
 import Base from "$layout/Base.astro";
-import Section from '$part/Section.astro';
-import Tags from '$part/Tags.astro';
-import Icon from '$part/Icon.svelte';
-// 1. Generate a new path for every collection entry
-export async function getStaticPaths() {
-  const projects = await getCollection('projects');
-  return projects.map(entry => ({
-    params: { slug: entry.id }, props: { entry },
-  }));
+import Icon from "$part/Icon.svelte";
+import Section from "$part/Section.astro";
+
+interface Props {
+    entry: CollectionEntry<"projects">;
 }
-// 2. When it's time to render, you can get the entry directly from the prop
-const { entry } = Astro.props;
+
+export async function getStaticPaths() {
+    const projects = await getCollection("projects");
+
+    return projects.map((entry) => ({
+        params: { slug: entry.id },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props as Props;
 const { Content } = await render(entry);
+const hasIcon = Boolean(entry.data.icon);
 ---
-<Base head={{title: entry.data.title, description: entry.data.excerpt ?? '' }}>
-  <Section>
-    <div class="flex flex-col gap-4" transition:name={`project-card-${entry.id}`}>
-      <div class="flex flex-row gap-4 items-center">
-        {entry.data?.icon && <div class="w-8 h-8 flex items-center justify-center" set:html={entry.data.icon} transition:name={`project-icon-${entry.id}`}></div>}
-        <h1 class="text-4xl font-bold mb-0 font-serif" transition:name={`project-title-${entry.id}`}><a class="hover:underline" href={entry.data.url} target="_blank">{entry.data.title}</a></h1>
-      </div>
-      <Tags tags={entry.data.tags} />
-      <div class="prose prose-invert prose-blue prose-lg prose-a:text-blue-300 prose-a:no-underline prose-a:hover:underline">
-        <Content />
-      </div>
-      {entry.data?.code && <div><a href={entry.data.code} target="_blank" rel="noopener" class="text-zinc-50"><Icon icon="github" class="size-6" /></a></div>}
-      <div>
-      <a href="/" class="text-blue-300 hover:underline mt-4">&larr; Home</a>
-      </div>
-    </div>
-  </Section>
+
+<Base
+    head={{
+        title: entry.data.title,
+        description: entry.data.excerpt ?? "",
+    }}
+>
+    <Section>
+        <a
+            href="/projects"
+            class="mb-5 inline-flex text-sm text-blue-300 hover:underline"
+        >
+            &larr; All projects
+        </a>
+
+        <!-- Project identity and primary actions -->
+        <header
+            class="border-y border-zinc-700/80 py-7 sm:py-10"
+            transition:name={`project-card-${entry.id}`}
+        >
+            <div
+                class:list={[
+                    "grid gap-6",
+                    hasIcon &&
+                        "sm:grid-cols-[5rem_minmax(0,1fr)] sm:gap-8",
+                ]}
+            >
+                {
+                    entry.data.icon && (
+                        <div
+                            class="flex size-20 items-center justify-center rounded-xl border border-zinc-700 bg-zinc-800/60 p-3 text-emerald-500 [&_img]:max-h-full [&_img]:max-w-full [&_svg]:max-h-full [&_svg]:max-w-full"
+                            set:html={entry.data.icon}
+                            transition:name={`project-icon-${entry.id}`}
+                        />
+                    )
+                }
+
+                <div class="min-w-0 max-w-3xl">
+                    <h1
+                        class="font-serif text-4xl font-bold leading-tight sm:text-5xl"
+                        transition:name={`project-title-${entry.id}`}
+                    >
+                        {entry.data.title}
+                    </h1>
+
+                    {
+                        entry.data.excerpt && (
+                            <p class="mt-4 text-lg leading-relaxed text-zinc-300">
+                                {entry.data.excerpt}
+                            </p>
+                        )
+                    }
+
+                    <ul class="mt-5 flex flex-wrap gap-2" aria-label="Project tags">
+                        {
+                            entry.data.tags.map((tag) => (
+                                <li>
+                                    <a
+                                        href={`/tag/${tag}/`}
+                                        class="inline-flex rounded-full border border-zinc-700 px-2.5 py-1 text-xs text-zinc-400 transition hover:border-emerald-500/50 hover:text-emerald-300"
+                                    >
+                                        {tag}
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <a
+                            href={entry.data.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 rounded-md bg-emerald-500 px-4 py-2.5 font-bold text-zinc-950 transition hover:bg-emerald-400"
+                        >
+                            Open app
+                            <Icon icon="ext-link" class="size-4" />
+                        </a>
+
+                        {
+                            entry.data.code && (
+                                <a
+                                    href={entry.data.code}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-2 rounded-md border border-zinc-600 px-4 py-2.5 text-blue-300 transition hover:border-blue-300 hover:bg-zinc-800"
+                                >
+                                    <Icon icon="github" class="size-4" />
+                                    View source
+                                </a>
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Project notes authored in the corresponding MDX file -->
+        <div
+            class:list={[
+                "mt-8 grid",
+                hasIcon && "sm:grid-cols-[5rem_minmax(0,1fr)] sm:gap-8",
+            ]}
+        >
+            <article
+                class:list={[
+                    "min-w-0 max-w-3xl",
+                    hasIcon && "sm:col-start-2",
+                ]}
+            >
+                <div
+                    class="prose prose-lg prose-invert max-w-none prose-a:text-blue-300 prose-a:no-underline prose-a:hover:underline prose-headings:font-serif prose-headings:font-bold prose-img:rounded-xl prose-img:border prose-img:border-zinc-700"
+                >
+                    <Content />
+                </div>
+            </article>
+        </div>
+
+        <div
+            class:list={[
+                "mt-8 grid",
+                hasIcon && "sm:grid-cols-[5rem_minmax(0,1fr)] sm:gap-8",
+            ]}
+        >
+            <nav
+                class:list={[
+                    "flex max-w-3xl flex-wrap items-center justify-between gap-4 border-t border-zinc-700 pt-6 text-sm",
+                    hasIcon && "sm:col-start-2",
+                ]}
+                aria-label="Project navigation"
+            >
+                <a class="text-blue-300 hover:underline" href="/projects">
+                    &larr; All projects
+                </a>
+                <a class="text-blue-300 hover:underline" href="/">
+                    Home &rarr;
+                </a>
+            </nav>
+        </div>
+    </Section>
 </Base>
