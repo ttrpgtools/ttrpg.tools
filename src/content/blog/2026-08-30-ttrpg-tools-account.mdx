@@ -1,0 +1,44 @@
++++
+title = "TTRPG Tools Account"
+excerpt = "I am test-driving the ability to have your TTRPG characters, etc. saved online."
+date = 2026-08-30
+tags = ["feature", "meta"]
+slug = "ttrpg-tools-account"
+[banner]
+src = "/img/ttrpg-in-the-clouds.avif"
+alt = "A desk with TTRPG supplies on a floating island in the clouds amid other floating islands."
++++
+
+Since the first tool I created under the banner of TTRPG Tools, my goal has always been to let people avoid relying on a third-party service.
+
+Essentially, my apps, starting with the Brighter Worlds character sheet manager, were applications that you ran in your browser. You could save character information locally in the browser, as well as export it to a file on your computer. You could then import that file into the tool somewhere else if you needed to.
+
+In that situation, you owned the data. I never see that data. It stays in your browser. I'm just providing the mechanical functionality that lets you work with that data, create it, and play games using it.
+
+That said, over the years, a few people have asked if it would be possible to edit things on one computer and see the results somewhere else. While that was technically possible with the export/import mechanism, it was awkward. So people asked about an account.
+
+Not many people, but enough that I have been exploring this idea for over a year, working to determine the best model and abstraction on my end. I don't necessarily want to run a giant service. I also don't want to spend a lot of money on what is essentially just a hobby, hosting all of these things for people. That's why, originally, I wanted people to store everything locally. That way, I don't have to pay for a database or handle authentication.
+
+But here we are, and now I have done those things.
+
+I'm starting with the Keeper's Call application, as it is my most recent one and likely has very few users.
+
+That's another thing: I never really tracked any of the app usage. I'm not sure how many people are using these tools. I don't imagine any of them have much usage. I know a couple of my own player groups use some of them, so I'm aware of those users. Still, beyond that, I have publicized some more broadly, while others are more niche.
+
+With this account mechanism, I will have a better idea of how many people are using them. I don't intend to do anything with that. Also, the account will be shared across all my tools. So one login for both Keeper's Call and Nimble, for example. But if you don't want to create yet another account, then don't. I wouldn't blame you.
+
+I'm strictly keeping this as a feature for those who want it. The tools will remain available locally, so you can use character sheets without an account. However, some tools may require one.
+
+For example, in the Keeper's Call tool, I created a campaign section that lets a Keeper create a campaign, and players can add their characters to that campaign. It wouldn't be practical to have a persistent campaign that people can join independently if everyone is working locally. I have tried a similar approach in the past using peer-to-peer concepts. Still, it only works when everyone is actively using the tools. Even then, it wasn't as smooth as I'd hoped.
+
+This lets groups run a proper campaign, where the Keeper has read-only access to the players' character sheets. Is that strictly necessary? No. But if you want that functionality, it exists, and we can add more functionality over time that builds on this campaign concept.
+
+There are other Keeper tools that also require an account to save some information. But again, those are optional. You can still use the character sheet functionality without having an account.
+
+That is my intention for any other applications that I add this to: the core functionality will remain local-first. If you want to save your characters online, I can set that up so you can save them and have them "cloud-managed".
+
+If anyone has ideas for features they'd like to see now that this is possible, let me know. I'm happy to explore different options and concepts now that I have the framework and scaffolding in place to let users sign in and store data.
+
+In the future, I think any new tools that I add for new systems, or even tools that are not character sheet managers, will likely end up having this same dual nature: local-only by default, with the option to sign in and save whatever you're working with to your online account.
+
+If you have any comments or would like to know more about any of it, let me know. Otherwise, look for updates to some of the tools as I roll this out over time.
