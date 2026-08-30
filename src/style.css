@@ -71,4 +71,71 @@
     font-size: 0.75rem;
     opacity: 0.7;
   }
+
+  .resource-profile {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-left: 0.4rem;
+    vertical-align: 0.1em;
+  }
+
+  .resource-profile-badge {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid color-mix(in oklab, var(--color-zinc-500) 45%, transparent);
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--color-zinc-800) 80%, transparent);
+    color: var(--color-zinc-300);
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    padding: 0.25rem 0.45rem;
+    white-space: nowrap;
+  }
+
+  .resource-profile-badge--free {
+    border-color: color-mix(in oklab, var(--color-emerald-500) 55%, transparent);
+    background: color-mix(in oklab, var(--color-emerald-950) 75%, transparent);
+    color: var(--color-emerald-300);
+  }
+
+  .resource-profile-badge--paid {
+    border-color: color-mix(in oklab, var(--color-amber-500) 55%, transparent);
+    background: color-mix(in oklab, var(--color-amber-950) 75%, transparent);
+    color: var(--color-amber-300);
+  }
+
+  .resource-profile-badge--format {
+    border-color: color-mix(in oklab, var(--color-blue-500) 55%, transparent);
+    background: color-mix(in oklab, var(--color-blue-950) 75%, transparent);
+    color: var(--color-blue-300);
+  }
+
+  .resource-profile-badge--genre {
+    border-color: color-mix(in oklab, var(--color-violet-500) 55%, transparent);
+    background: color-mix(in oklab, var(--color-violet-950) 75%, transparent);
+    color: var(--color-violet-300);
+  }
+
+  .resource-profile-badge--ready {
+    border-color: color-mix(in oklab, var(--color-cyan-500) 55%, transparent);
+    background: color-mix(in oklab, var(--color-cyan-950) 75%, transparent);
+    color: var(--color-cyan-300);
+  }
+
+  .resource-profile-badge--platform,
+  .resource-profile-badge--mode {
+    border-color: color-mix(in oklab, var(--color-teal-500) 50%, transparent);
+    background: color-mix(in oklab, var(--color-teal-950) 72%, transparent);
+    color: var(--color-teal-300);
+  }
+
+  .resource-profile-badge--feature {
+    border-color: color-mix(in oklab, var(--color-fuchsia-500) 50%, transparent);
+    background: color-mix(in oklab, var(--color-fuchsia-950) 72%, transparent);
+    color: var(--color-fuchsia-300);
+  }
 }

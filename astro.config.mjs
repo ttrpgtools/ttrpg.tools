@@ -5,6 +5,7 @@ import svelte from "@astrojs/svelte";
 import tailwind from "@tailwindcss/vite";
 import remarkWikiLink from "@braindb/remark-wiki-link";
 import gardenDB from "./src/lib/util/garden-db.ts";
+import remarkResourceProfiles from "./src/lib/util/remark-resource-profiles.ts";
 import { slugify } from "./src/lib/util/slugify.ts";
 import { unified } from "@astrojs/markdown-remark";
 
@@ -55,6 +56,7 @@ export default defineConfig({
             },
           },
         ],
+        remarkResourceProfiles,
       ],
     }),
     shikiConfig: { theme: "css-variables" },
