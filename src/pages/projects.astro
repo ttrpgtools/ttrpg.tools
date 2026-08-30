@@ -1,18 +1,35 @@
 ---
-import Base from "$layout/Base.astro";
-import Section from "$part/Section.astro";
 import { getCollection } from "astro:content";
-import Project from "$part/Project.astro";
 
-const projects = await getCollection('projects');
+import Base from "$layout/Base.astro";
+import Project from "$part/Project.astro";
+import Section from "$part/Section.astro";
+
+const projects = await getCollection("projects");
 ---
-<Base head={{title: 'Projects', description: 'A list of projects from TTRPG.tools' }}>
-	<Section>
-    <h2 class="text-3xl font-serif font-bold mb-4">Projects</h2>
-    <div class="flex flex-col gap-4">
-      {projects.map(proj => (
-        <Project title={proj.data.title} url={proj.data.url} slug={proj.id} excerpt={proj.data.excerpt} tags={proj.data.tags} icon={proj.data.icon} code={proj.data.code} />
-        ))}
-    </div>
-	</Section>
+
+<Base
+    head={{
+        title: "Projects",
+        description: "A list of projects from TTRPG.tools",
+    }}
+>
+    <Section>
+        <h1 class="mb-4 font-serif text-3xl font-bold">Projects</h1>
+
+        <div class="flex flex-col gap-4">
+            {
+                projects.map((project) => (
+                    <Project
+                        title={project.data.title}
+                        url={project.data.url}
+                        slug={project.id}
+                        excerpt={project.data.excerpt}
+                        tags={project.data.tags}
+                        icon={project.data.icon}
+                    />
+                ))
+            }
+        </div>
+    </Section>
 </Base>
